@@ -15,8 +15,7 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Danh sách thể loại</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Thêm thể loại</a>
+                        <a class="nav-link" href="{{ route('admin.genre.index') }}">Danh sách thể loại</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -26,8 +25,7 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Danh sách danh mục</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Thêm danh mục</a>
+                        <a class="nav-link" href="{{ route('admin.category.index') }}">Danh sách danh mục</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMovie" aria-expanded="false" aria-controls="collapsePages">
@@ -37,8 +35,7 @@
                 </a>
                 <div class="collapse" id="collapseMovie" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Danh sách phim</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Thêm phim</a>
+                        <a class="nav-link" href="{{ route('admin.movie.index') }}">Danh sách phim</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEpisode" aria-expanded="false" aria-controls="collapsePages">
@@ -48,13 +45,12 @@
                 </a>
                 <div class="collapse" id="collapseEpisode" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Danh sách tập phim</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Thêm tập phim</a>
+                        <a class="nav-link" href="{{ route('admin.episode.index') }}">Danh sách tập phim</a>
                     </nav>
                 </div>
 
                 <div class="sb-sidenav-menu-heading">COUNTRY</div>
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('admin.country.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-earth-americas"></i></i></div>
                     Quốc Gia
                 </a>

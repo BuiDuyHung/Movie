@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('admincp.categories.index', compact('categories'));
     }
 
     /**
@@ -20,15 +23,21 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admincp.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status
+        ]);
+
+        return redirect()->route('admin.category.index')->with('msg', 'Thêm danh mục thành công !');
     }
 
     /**
@@ -44,15 +53,24 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        return view('admincp.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status
+        ]);
+
+        return redirect()->route('admin.category.index')->with('msg', 'Cập nhật danh mục thành công !');
     }
 
     /**
@@ -60,6 +78,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+
+        return redirect()->route('admin.category.index')->with('msg', 'xóa danh mục thành công !');
     }
 }
