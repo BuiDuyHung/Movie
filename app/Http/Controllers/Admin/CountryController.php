@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\CountryRequest;
+use App\Models\Country;
 
 class CountryController extends Controller
 {
@@ -12,7 +13,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $countries = Country::all();
+
+        return view('admincp.countries.index', compact('countries'));
     }
 
     /**
@@ -20,21 +23,27 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admincp.countries.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CountryRequest $request)
     {
-        //
+        Country::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status
+        ]);
+
+        return redirect()->route('admin.country.index')->with('msg', 'Thêm quốc gia thành công !');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }
@@ -42,24 +51,36 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $country = Country::find($id);
+
+        return view('admincp.countries.edit', compact('country'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CountryRequest $request, $id)
     {
-        //
+        $country = Country::find($id);
+        $country->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status
+        ]);
+
+        return redirect()->route('admin.category.index')->with('msg', 'Cập nhật quốc gia thành công !');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $country = Country::find($id);
+        $country->delete();
+
+        return redirect()->route('admin.country.index')->with('msg', 'xóa quốc gia thành công !');
     }
 }
