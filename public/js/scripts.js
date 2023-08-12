@@ -25,33 +25,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    const tableList = document.querySelector('#datatablesSimple');
-    const deleteForm = document.querySelector('.delete-form');
-
-    if(tableList){
-        tableList.addEventListener('click', (e) => {
-            if(e.target.classList.contains("delete-action")) {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Bạn có chắc chắn?',
-                    text: "Nếu xóa, bạn không thể khôi phục!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ok, Đồng ý xóa!'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                        const action = e.target.href;
-                        deleteForm.action = action;
-                        deleteForm.submit();
-                    }
-                  })
-            }
+    // Delete
+    const deleteButtons = document.querySelectorAll(".delete-action");
+    deleteButtons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const form = this.closest(".delete-form");
+            Swal.fire({
+                title: "Bạn có chắc chắn?",
+                text: "Nếu xóa, bạn không thể khôi phục!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ok, Đồng ý xóa!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
         });
-    }
-
-
-
-
+    });
 });
