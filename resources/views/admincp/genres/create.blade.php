@@ -25,6 +25,17 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Slug :</label>
+                        <input type="text" name="slug" class="form-control {{$errors->has('slug')?'is-invalid':''}}" value="{{old('slug')}}">
+                        @error('slug')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Trạng thái :</label>
                         <select class="form-select {{$errors->has('status')?'is-invalid':''}}" name="status" aria-label="Default select example">
                             <option value="0" selected>--chọn trạng thái---</option>

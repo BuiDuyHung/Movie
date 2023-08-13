@@ -12,6 +12,7 @@ class Country extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'status',
     ];

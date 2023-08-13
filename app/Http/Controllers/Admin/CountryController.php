@@ -33,6 +33,7 @@ class CountryController extends Controller
     {
         Country::create([
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->description,
             'status' => $request->status
         ]);
@@ -66,11 +67,12 @@ class CountryController extends Controller
         $country = Country::find($id);
         $country->update([
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->description,
             'status' => $request->status
         ]);
 
-        return redirect()->route('admin.category.index')->with('msg', 'Cập nhật quốc gia thành công !');
+        return redirect()->route('admin.country.index')->with('msg', 'Cập nhật quốc gia thành công !');
     }
 
     /**

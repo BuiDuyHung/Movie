@@ -23,6 +23,7 @@
                 <tr>
                     <th>#</th>
                     <th>Tên</th>
+                    <th>slug</th>
                     <th>Mô tả</th>
                     <th>Trạng thái</th>
                     <th>Hành động</th>
@@ -34,6 +35,7 @@
                     <tr>
                         <td> {{ $item->id }} </td>
                         <td> {{ $item->title }} </td>
+                        <td> {{ $item->slug }} </td>
                         <td> {!! $item->description !!} </td>
                         <td>
                             @if ($item->status == 1)

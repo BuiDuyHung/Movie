@@ -34,6 +34,7 @@ class GenreController extends Controller
     {
         Genre::create([
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->description,
             'status' => $request->status
         ]);
@@ -67,6 +68,7 @@ class GenreController extends Controller
         $genre = Genre::find($id);
         $genre->update([
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->description,
             'status' => $request->status
         ]);

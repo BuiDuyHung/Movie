@@ -33,6 +33,7 @@ class CategoryController extends Controller
     {
         Category::create([
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->description,
             'status' => $request->status
         ]);
@@ -66,6 +67,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->update([
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->description,
             'status' => $request->status
         ]);

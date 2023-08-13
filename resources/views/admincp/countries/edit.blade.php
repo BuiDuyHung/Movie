@@ -18,8 +18,19 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="">Tên :</label>
-                        <input type="text" name="title" class="form-control {{$errors->has('title')?'is-invalid':''}}" value="{{old('title') ?? $country->title}}">
+                        <input type="text" name="title" class="form-control title {{$errors->has('title')?'is-invalid':''}}" value="{{old('title') ?? $country->title}}">
                         @error('title')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Slug :</label>
+                        <input type="text" name="slug" class="form-control slug {{$errors->has('slug')?'is-invalid':''}}" value="{{old('slug') ?? $country->slug}}">
+                        @error('slug')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>

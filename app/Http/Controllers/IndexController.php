@@ -3,22 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Country;
+use App\Models\Episode;
+use App\Models\Genre;
+use App\Models\Movie;
+use App\Models\Watch;
 
 class IndexController extends Controller
 {
     public function index(){
-        return view('pages.home');
+        $categories = Category::all();
+        $genres = Genre::all();
+        $countries = Country::all();
+
+        return view('pages.home', compact('categories', 'genres', 'countries'));
     }
 
-    public function category(){
+    public function category($slug){
         return view('pages.category');
     }
 
-    public function genre(){
+    public function genre($slug){
         return view('pages.genre');
     }
 
-    public function country(){
+    public function country($slug){
         return view('pages.country');
     }
 
