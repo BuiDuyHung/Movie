@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GenreRequest extends FormRequest
+class MovieRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,25 @@ class GenreRequest extends FormRequest
             'title' => 'required|min:6',
             'slug' => 'required|min:6',
             'description' => 'required|min:6',
+            'image' => 'required',
             'status' => ['required', 'integer', function($attribute, $value, $fail) {
                 if($value == '0'){
                     $fail('Vui lòng chọn trạng thái');
+                }
+            }],
+            'genre_id' => ['required', 'integer', function($attribute, $value, $fail) {
+                if($value == '0'){
+                    $fail('Vui lòng chọn thể loại');
+                }
+            }],
+            'category_id' => ['required', 'integer', function($attribute, $value, $fail) {
+                if($value == '0'){
+                    $fail('Vui lòng chọn danh mục');
+                }
+            }],
+            'country_id' => ['required', 'integer', function($attribute, $value, $fail) {
+                if($value == '0'){
+                    $fail('Vui lòng chọn quốc gia');
                 }
             }],
         ];
@@ -51,6 +67,10 @@ class GenreRequest extends FormRequest
             'slug' => 'Slug',
             'description' => 'Mô tả',
             'status' => 'Trạng thái',
+            'image' => 'Hình ảnh',
+            'genre_id' => 'Thể loại',
+            'category_id' => 'Danh mục',
+            'country_id' => 'Quốc gia',
         ];
     }
 }

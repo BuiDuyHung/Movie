@@ -23,6 +23,7 @@ class CategoryRequest extends FormRequest
     {
         $rules =[
             'title' => 'required|min:6',
+            'slug' => 'required|min:6',
             'description' => 'required|min:6',
             'status' => ['required', 'integer', function($attribute, $value, $fail) {
                 if($value == '0'){
@@ -47,6 +48,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'title' => 'Tiêu đề',
+            'slug' => 'Tiêu đề',
             'description' => 'Mô tả',
             'status' => 'Trạng thái',
         ];

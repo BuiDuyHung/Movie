@@ -15,7 +15,7 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="">Tên :</label>
-                        <input type="text" name="title" class="form-control {{$errors->has('title')?'is-invalid':''}}" value="{{old('title')}}">
+                        <input type="text" name="title" class="form-control title {{$errors->has('title')?'is-invalid':''}}" value="{{old('title')}}">
                         @error('title')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -26,7 +26,7 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="">Slug :</label>
-                        <input type="text" name="slug" class="form-control {{$errors->has('slug')?'is-invalid':''}}" value="{{old('slug')}}">
+                        <input type="text" name="slug" class="form-control slug {{$errors->has('slug')?'is-invalid':''}}" value="{{old('slug')}}">
                         @error('slug')
                             <div class="invalid-feedback">
                                 {{$message}}

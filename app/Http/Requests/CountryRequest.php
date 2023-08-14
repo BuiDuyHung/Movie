@@ -23,6 +23,7 @@ class CountryRequest extends FormRequest
     {
         $rules =[
             'title' => 'required|min:6',
+            'slug' => 'required|min:6',
             'description' => 'required|min:6',
             'status' => ['required', 'integer', function($attribute, $value, $fail) {
                 if($value == '0'){
@@ -47,6 +48,7 @@ class CountryRequest extends FormRequest
     {
         return [
             'title' => 'Tiêu đề',
+            'slug' => 'Slug',
             'description' => 'Mô tả',
             'status' => 'Trạng thái',
         ];

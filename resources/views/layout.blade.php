@@ -10,21 +10,21 @@
       <meta name="language" content="Việt Nam">
 
 
-      <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" />
-      <meta name="revisit-after" content="1 days" />
-      <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+      {{-- <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" /> --}}
+      {{-- <meta name="revisit-after" content="1 days" /> --}}
+      {{-- <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' /> --}}
       <title>Phim hay - Xem phim hay nhất</title>
-      <meta name="description" content="Phim hay 2021 - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" />
-      <link rel="canonical" href="">
-      <link rel="next" href="" />
-      <meta property="og:locale" content="vi_VN" />
-      <meta property="og:title" content="Phim hay 2020 - Xem phim hay nhất" />
-      <meta property="og:description" content="Phim hay 2020 - Xem phim hay nhất, phim hay trung quốc, hàn quốc, việt nam, mỹ, hong kong , chiếu rạp" />
-      <meta property="og:url" content="" />
-      <meta property="og:site_name" content="Phim hay 2021- Xem phim hay nhất" />
-      <meta property="og:image" content="" />
-      <meta property="og:image:width" content="300" />
-      <meta property="og:image:height" content="55" />
+      {{-- <meta name="description" content="Phim hay 2021 - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" /> --}}
+      {{-- <link rel="canonical" href=""> --}}
+      {{-- <link rel="next" href="" /> --}}
+      {{-- <meta property="og:locale" content="vi_VN" /> --}}
+      {{-- <meta property="og:title" content="Phim hay 2020 - Xem phim hay nhất" /> --}}
+      {{-- <meta property="og:description" content="Phim hay 2020 - Xem phim hay nhất, phim hay trung quốc, hàn quốc, việt nam, mỹ, hong kong , chiếu rạp" /> --}}
+      {{-- <meta property="og:url" content="" /> --}}
+      {{-- <meta property="og:site_name" content="Phim hay 2021- Xem phim hay nhất" /> --}}
+      {{-- <meta property="og:image" content="" /> --}}
+      {{-- <meta property="og:image:width" content="300" /> --}}
+      {{-- <meta property="og:image:height" content="55" /> --}}
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
       <link rel='dns-prefetch' href='//s.w.org' />
@@ -38,6 +38,7 @@
          width: 100%;
          }
       </style>
+
       <style>#header .site-title {background: url(https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png) no-repeat top left;background-size: contain;text-indent: -9999px;}</style>
    </head>
    <body class="home blog halimthemes halimmovies" data-masonry="">
@@ -97,27 +98,26 @@
                   <div class="menu-menu_1-container">
                      <ul id="menu-menu_1" class="nav navbar-nav navbar-left">
                         <li class="current-menu-item active"><a title="Trang Chủ" href="{{ route('home.index') }}">Trang Chủ</a></li>
+                        <li class="mega dropdown">
+                            <a title="Thể Loại" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Thể Loại<span class="caret"></span></a>
+                            <ul role="menu" class=" dropdown-menu">
+                                 @foreach ($genres as $item)
+                                     <li><a title="{{ $item->title }}" href="{{ route('home.genre', $item->slug) }}"> {{ $item->title }} </a></li>
+                                 @endforeach
+                            </ul>
+                         </li>
+                         <li class="mega dropdown">
+                            <a title="Quốc Gia" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Quốc Gia<span class="caret"></span></a>
+                            <ul role="menu" class=" dropdown-menu">
+                                 @foreach ($countries as $item)
+                                     <li><a title="{{ $item->title }}" href="{{ route('home.country', $item->slug) }}"> {{ $item->title }} </a></li>
+                                 @endforeach
+                            </ul>
+                         </li>
 
                         @foreach ($categories as $item)
-                            <li class="mega"><a title="{{ $item->title }}" href="{{ route('home.category') }}"> {{ $item->title }} </a></li>
+                            <li class="mega"><a title="{{ $item->title }}" href="{{ route('home.category', $item->slug) }}"> {{ $item->title }} </a></li>
                         @endforeach
-
-                        <li class="mega dropdown">
-                           <a title="Thể Loại" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Thể Loại<span class="caret"></span></a>
-                           <ul role="menu" class=" dropdown-menu">
-                                @foreach ($genres as $item)
-                                    <li><a title="{{ $item->title }}" href=""> {{ $item->title }} </a></li>
-                                @endforeach
-                           </ul>
-                        </li>
-                        <li class="mega dropdown">
-                           <a title="Quốc Gia" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Quốc Gia<span class="caret"></span></a>
-                           <ul role="menu" class=" dropdown-menu">
-                                @foreach ($countries as $item)
-                                    <li><a title="{{ $item->title }}" href=""> {{ $item->title }} </a></li>
-                                @endforeach
-                           </ul>
-                        </li>
 
                      </ul>
                   </div>
