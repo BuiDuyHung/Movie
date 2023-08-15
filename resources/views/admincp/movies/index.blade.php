@@ -14,7 +14,7 @@
     @endif
     <div class="col-lg-12">
         <div class="d-flex flex-wrap align-items-center justify-content-end mb-4">
-            <a href="{{ route('admin.movie.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus"></i> Thêm thể loại</a>
+            <a href="{{ route('admin.movie.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus"></i> Thêm phim</a>
         </div>
     </div>
     <div class="table-responsive">

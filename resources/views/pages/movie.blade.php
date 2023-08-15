@@ -32,7 +32,7 @@
                       <img class="movie-thumb" src="https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=https://1.bp.blogspot.com/-fL7o9nefEPc/YOk_YIB6QRI/AAAAAAAAJn8/hahCLlgRq4AFc8O4YeKhpb5zncixXAF0wCLcBGAsYHQ/s320/images.jpg" alt="GÓA PHỤ ĐEN">
                       <div class="bwa-content">
                          <div class="loader"></div>
-                         <a href="{{ route('watch') }}" class="bwac-btn">
+                         <a href="{{ route('home.watch') }}" class="bwac-btn">
                          <i class="fa fa-play"></i>
                          </a>
                       </div>

@@ -108,7 +108,9 @@
                     <div class="mb-3">
                         <label for="">Hình ảnh :</label>
                         <input type="file" name="image" class="form-control" value="{{old('image')}}">
-                        <img src="{{asset('uploads/movie/'.$movie->image)}}" width="100px" alt="{{$movie->image}}" class="mt-2">
+                        @if ($movie)
+                            <img src="{{asset('uploads/movie/'.$movie->image)}}" width="100px" alt="{{$movie->image}}" class="mt-2 ">
+                        @endif
 
                     </div>
                 </div>

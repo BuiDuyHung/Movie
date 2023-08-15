@@ -17,7 +17,9 @@ class IndexController extends Controller
         $genres = Genre::all();
         $countries = Country::all();
 
-        return view('pages.home', compact('categories', 'genres', 'countries'));
+        $categories_home = Category::with('movies')->where('status', 1)->get();
+
+        return view('pages.home', compact('categories', 'genres', 'countries', 'categories_home'));
     }
 
     public function category($slug){
@@ -51,14 +53,26 @@ class IndexController extends Controller
     }
 
     public function movie(){
-        return view('pages.movie');
+        $categories = Category::all();
+        $genres = Genre::all();
+        $countries = Country::all();
+
+        return view('pages.movie', compact('categories', 'genres', 'countries'));
     }
 
     public function watch(){
-        return view('pages.watch');
+        $categories = Category::all();
+        $genres = Genre::all();
+        $countries = Country::all();
+
+        return view('pages.watch', compact('categories', 'genres', 'countries'));
     }
 
     public function episode(){
-        return view('pages.episode');
+        $categories = Category::all();
+        $genres = Genre::all();
+        $countries = Country::all();
+
+        return view('pages.episode', compact('categories', 'genres', 'countries'));
     }
 }
