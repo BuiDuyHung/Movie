@@ -11,7 +11,6 @@ use App\Models\Country;
 class Movie extends Model
 {
     use HasFactory;
-    public $timestamps = false;
 
     protected $fillable = [
         'title',
@@ -26,6 +25,9 @@ class Movie extends Model
         'hot',
         'resolution',
         'sub',
+        'year',
+        'time',
+        'tag',
     ];
 
     public function category(){

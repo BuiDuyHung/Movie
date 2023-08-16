@@ -32,6 +32,8 @@ Route::get('/quoc-gia/{slug}', [IndexController::class, 'country'])->name('home.
 Route::get('/phim/{slug}', [IndexController::class, 'movie'])->name('home.movie');
 Route::get('/xem-phim', [IndexController::class, 'watch'])->name('home.watch');
 Route::get('/tap-phim', [IndexController::class, 'episode'])->name('home.episode');
+Route::get('/nam/{year}', [IndexController::class, 'year'])->name('home.year');
+Route::get('/tag/{tag}', [IndexController::class, 'tag'])->name('home.tag');
 
 
 Route::prefix('admin')->name('admin.')->group(function (){
@@ -42,6 +44,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
     Route::resource('episode', EpisodeController::class);
     Route::resource('genre', GenreController::class);
     Route::resource('movie', MovieController::class);
+    Route::get('/update-year-movie', [MovieController::class, 'update_year'])->name('update_year');
     Route::resource('watch', WatchController::class);
 });
 

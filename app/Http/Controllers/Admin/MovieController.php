@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\Country;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
@@ -51,7 +53,10 @@ class MovieController extends Controller
             'hot' => $request->hot,
             'sub' => $request->sub,
             'resolution' => $request->resolution,
-            'image' => $request->image
+            'image' => $request->image,
+            'year' => $request->year,
+            'time' => $request->time,
+            'tag' => $request->tag,
         ]);
 
         return redirect()->route('admin.movie.index')->with('msg', 'Thêm phim thành công !');
@@ -97,6 +102,9 @@ class MovieController extends Controller
         $movie->resolution = $request->resolution;
         $movie->sub = $request->sub;
         $movie->image = $request->image;
+        $movie->year = $request->year;
+        $movie->time = $request->time;
+        $movie->tag = $request->tag;
         $movie->save();
 
         return redirect()->route('admin.movie.index')->with('msg', 'Cập nhật phim thành công !');
@@ -115,5 +123,12 @@ class MovieController extends Controller
         $movie->delete();
 
         return redirect()->route('admin.movie.index')->with('msg', 'xóa phim thành công !');
+    }
+
+    public function update_year(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['id_movie']);
+        $movie->year = $data['year'];
+        $movie->save();
     }
 }

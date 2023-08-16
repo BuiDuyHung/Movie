@@ -54,6 +54,19 @@
 
 
         <script>
+            $('.select-year').change(function(){
+                var year = $(this).find(':selected').val()
+                var id_movie = $(this).attr('id')
+                $.ajax({
+                    url: "{{ route('admin.update_year') }}",
+                    method: 'GET',
+                    data: {year: year, id_movie: id_movie},
+                    success: function(){
+                        alert('Thay đổi năm phim theo năm '+year+' thành công !')
+                    }
+                })
+            })
+
             $('#lfm').filemanager('image');
             let table = new DataTable('#dataTable');
 
@@ -91,7 +104,7 @@
         </script>
 
         <script>
-            CKEDITOR.replace('description', options);
+            CKEDITOR.replace('editor', options);
         </script>
     </body>
 </html>

@@ -15,77 +15,104 @@
        </div>
     </div>
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
-       <section id="content" class="test">
-          <div class="clearfix wrap-content">
+        <section id="content" class="test">
+            <div class="clearfix wrap-content">
 
-             <div class="halim-movie-wrapper">
-                <div class="title-block">
-                   <div id="bookmark" class="bookmark-img-animation primary_ribbon" data-id="38424">
-                      <div class="halim-pulse-ring"></div>
-                   </div>
-                   <div class="title-wrapper" style="font-weight: bold;">
-                      Bookmark
-                   </div>
-                </div>
-                <div class="movie_info col-xs-12">
-                   <div class="movie-poster col-md-3">
-                      <img class="movie-thumb" src="{{ $movie->image }}" alt="{{ $movie->slug }}">
-                      <div class="bwa-content">
-                         <div class="loader"></div>
-                         <a href="{{ route('home.watch') }}" class="bwac-btn">
-                         <i class="fa fa-play"></i>
-                         </a>
-                      </div>
-                   </div>
-                   <div class="film-poster col-md-9">
-                        <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;"> {{ $movie->title }} </h1>
-                        <h2 class="movie-title title-2" style="font-size: 12px;"> {{ $movie->title_english }} </h2>
-                        <ul class="list-info-group">
-                                <li class="list-info-group-item"><span>Trạng Thái</span> :
-                                    <span class="quality">
-                                        @if ($movie->resolution == 1)
-                                            HD
-                                        @elseif ($movie->resolution == 2)
-                                            SD
-                                        @elseif ($movie->resolution == 3)
-                                            HDCam
-                                        @elseif ($movie->resolution == 4)
-                                            Cam
-                                        @else
-                                            FullHD
-                                        @endif
-                                    </span>
-                                    <span class="episode">Vietsub</span>
-                                </li>
-                                <li class="list-info-group-item"><span>Thời lượng</span> : 133 Phút</li>
-                                <li class="list-info-group-item"><span>Thể loại</span> :
-                                    <a href="{{ route('home.genre', $movie->genre->slug) }}" rel="category tag">{{ $movie->genre->title }}</a>
-                                </li>
-                                <li class="list-info-group-item"><span>Danh mục</span> :
-                                    <a href="{{ route('home.category', $movie->category->slug) }}" rel="category tag">{{ $movie->category->title }}</a>
-                                </li>
-                                <li class="list-info-group-item"><span>Quốc gia</span> : <a href="{{ route('home.country', $movie->country->slug) }}" rel="tag"> {{ $movie->country->title }} </a></li>
+                <div class="halim-movie-wrapper">
+                    <div class="title-block">
+                    <div id="bookmark" class="bookmark-img-animation primary_ribbon" data-id="38424">
+                        <div class="halim-pulse-ring"></div>
+                    </div>
+                    <div class="title-wrapper" style="font-weight: bold;">
+                        Bookmark
+                    </div>
+                    </div>
+                    <div class="movie_info col-xs-12">
+                    <div class="movie-poster col-md-3">
+                        <img class="movie-thumb" src="{{ $movie->image }}" alt="{{ $movie->slug }}">
+                        <div class="bwa-content">
+                            <div class="loader"></div>
+                            <a href="{{ route('home.watch') }}" class="bwac-btn">
+                            <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="film-poster col-md-9">
+                            <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;"> {{ $movie->title }} </h1>
+                            <h2 class="movie-title title-2" style="font-size: 12px;"> {{ $movie->title_english }} </h2>
+                            <ul class="list-info-group">
+                                    <li class="list-info-group-item"><span>Trạng Thái</span> :
+                                        <span class="quality">
+                                            @if ($movie->resolution == 1)
+                                                HD
+                                            @elseif ($movie->resolution == 2)
+                                                SD
+                                            @elseif ($movie->resolution == 3)
+                                                HDCam
+                                            @elseif ($movie->resolution == 4)
+                                                Cam
+                                            @else
+                                                FullHD
+                                            @endif
+                                        </span>
+                                        <span class="episode">
+                                            @if ($movie->sub == 1)
+                                                Việt sub
+                                            @else
+                                                Thuyết minh
+                                            @endif
+                                        </span>
+                                    </li>
+                                    <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}} </li>
+                                    <li class="list-info-group-item"><span>Thể loại</span> :
+                                        <a href="{{ route('home.genre', $movie->genre->slug) }}" rel="category tag">{{ $movie->genre->title }}</a>
+                                    </li>
+                                    <li class="list-info-group-item"><span>Danh mục</span> :
+                                        <a href="{{ route('home.category', $movie->category->slug) }}" rel="category tag">{{ $movie->category->title }}</a>
+                                    </li>
+                                    <li class="list-info-group-item"><span>Quốc gia</span> : <a href="{{ route('home.country', $movie->country->slug) }}" rel="tag"> {{ $movie->country->title }} </a></li>
 
-                        </ul>
-                      <div class="movie-trailer hidden"></div>
-                   </div>
+                            </ul>
+                        <div class="movie-trailer hidden"></div>
+                    </div>
+                    </div>
                 </div>
-             </div>
-             <div class="clearfix"></div>
-             <div id="halim_trailer"></div>
-             <div class="clearfix"></div>
-             <div class="section-bar clearfix">
-                <h2 class="section-title"><span style="color:#ffed4d">Nội dung phim</span></h2>
-             </div>
-             <div class="entry-content htmlwrap clearfix">
-                <div class="video-item halim-entry-box">
-                   <article id="post-38424" class="item-content">
-                      <p> {!! $movie->description !!} </p>
-                   </article>
+                <div class="clearfix"></div>
+                <div id="halim_trailer"></div>
+                <div class="clearfix"></div>
+                <div class="section-bar clearfix">
+                    <h2 class="section-title"><span style="color:#ffed4d">Nội dung phim</span></h2>
                 </div>
-             </div>
-          </div>
-       </section>
+                <div class="entry-content htmlwrap clearfix">
+                    <div class="video-item halim-entry-box">
+                        <article id="post-38424" class="item-content">
+                            <p> {!! $movie->description !!} </p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="section-bar clearfix">
+                    <h2 class="section-title"><span style="color:#ffed4d">Tags</span></h2>
+                </div>
+                <div class="entry-content htmlwrap clearfix">
+                    <div class="video-item halim-entry-box">
+                        <article id="post-38424" class="item-content">
+                            @if ($movie->tag != NULL)
+                                @php
+                                    $tags = array();
+                                    $tags = explode(',', $movie->tag);
+                                @endphp
+                                @foreach ($tags as $tag)
+                                    <a href="{{route('home.tag', $tag)}}">{{$tag}}</a>
+                                @endforeach
+                            @else
+                                {{$movie->title}}
+                            @endif
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
        <section class="related-movies">
           <div id="halim_related_movies-2xx" class="wrap-slider">
              <div class="section-bar clearfix">
@@ -110,7 +137,13 @@
                                     FullHD
                                 @endif
                             </span>
-                            <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span>
+                            <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
+                                @if ($item->sub == 1)
+                                    Việt sub
+                                @else
+                                    Thuyết minh
+                                @endif
+                            </span>
                             <div class="icon_overlay"></div>
                             <div class="halim-post-title-box">
                                 <div class="halim-post-title ">

@@ -27,6 +27,9 @@ class MovieRequest extends FormRequest
             'slug' => 'required|min:6',
             'description' => 'required|min:6',
             'image' => 'required',
+            'time' => 'required',
+            'tag' => 'required',
+            'year' => 'required|integer',
 
             'status' => ['required', 'integer', function($attribute, $value, $fail) {
                 if($value == '0'){
@@ -92,6 +95,9 @@ class MovieRequest extends FormRequest
             'genre_id' => 'Thể loại',
             'category_id' => 'Danh mục',
             'country_id' => 'Quốc gia',
+            'year' => 'Năm sản xuất',
+            'time' => 'Thời lượng phim',
+            'tag' => 'Tag',
         ];
     }
 }

@@ -25,15 +25,20 @@
                     <th>Hình ảnh</th>
                     <th>Tên</th>
                     <th>Tên tiếng anh</th>
+                    <th>Thời lượng phim</th>
                     <th>Slug</th>
                     <th>Mô tả</th>
                     <th>Thể loại</th>
                     <th>Danh mục</th>
                     <th>Quốc gia</th>
+                    <th>Tag</th>
                     <th>Hot</th>
                     <th>Phụ đề</th>
                     <th>Định dạng</th>
                     <th>Trạng thái</th>
+                    <th>Năm sản xuất</th>
+                    <th>Ngày tạo</th>
+                    <th>Ngày cập nhật</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -47,11 +52,13 @@
                         </td>
                         <td> {{ $item->title }} </td>
                         <td> {{ $item->title_english }} </td>
+                        <td> {{ $item->time }} </td>
                         <td> {{ $item->slug }} </td>
                         <td> {!! $item->description !!} </td>
                         <td> {{ $item->genre->title }} </td>
                         <td> {{ $item->category->title }} </td>
                         <td> {{ $item->country->title }} </td>
+                        <td> {{ $item->tag }} </td>
                         <td>
                             @if ($item->hot == 1)
                                 <span class="text text-success">Có</span>
@@ -86,6 +93,19 @@
                                 <span class="text text-danger">Không hiển thị</span>
                             @endif
                         </td>
+                        <td>
+                            <select name="year" id="{{$item->id}}" class="select-year">
+                                @if (isset($item->year))
+                                    <option value="{{ $item->year }}">{{ $item->year }}</option>
+                                @else
+                                    @for ($year = 2000; $year <= 2023; $year++)
+                                        <option value="{{ $year }}">{{ $year }}</option>
+                                    @endfor
+                                @endif
+                            </select>
+                        </td>
+                        <td> {{ $item->created_at }} </td>
+                        <td> {{ $item->updated_at }} </td>
                         <td>
                             <div class="d-flex justify-content-start">
                                 <a href="{{ route('admin.movie.edit', $item->id) }}" class="badge bg-success" ><i class="fa-solid fa-pen-to-square" style="height: 20px" ></i></a>

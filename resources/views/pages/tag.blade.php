@@ -6,7 +6,7 @@
        <div class="panel-heading">
           <div class="row">
              <div class="col-xs-6">
-                <div class="yoast_breadcrumb hidden-xs"><span><span><a href=""> {{$country_slug->title}} </a> » <span class="breadcrumb_last" aria-current="page">2023</span></span></span></div>
+                <div class="yoast_breadcrumb hidden-xs"><span><span><a href="">Phim theo tag</a> » <span class="breadcrumb_last" aria-current="page"> {{$tag}} </span></span></span></div>
              </div>
           </div>
        </div>
@@ -16,15 +16,15 @@
     </div>
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
        <section>
-          <div class="section-bar clearfix">
-             <h1 class="section-title"><span>{{$country_slug->title}}</span></h1>
-          </div>
-          <div class="halim_box">
-            @foreach ($movie as $item)
-                <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-27021">
-                    <div class="halim-item">
-                        <a class="halim-thumb" href="{{ route('home.movie', $item->slug) }}" title=" {{$item->title}} ">
-                            <figure><img class="lazy img-responsive" src="{{ $item->image }}" alt=" {{$item->slug}} " title=" {{$item->title}} "></figure>
+            <div class="section-bar clearfix">
+                <h1 class="section-title"><span>{{$tag}}</span></h1>
+            </div>
+            <div class="halim_box">
+                @foreach ($movie as $item)
+                    <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-27021">
+                        <div class="halim-item">
+                        <a class="halim-thumb" href="{{ route('home.movie', $item->slug) }}" title="{{$item->title}}">
+                            <figure><img class="lazy img-responsive" src="{{$item->image}}" alt="{{$item->slug}}" title="{{$item->title}}"></figure>
                             <span class="status">
                                 @if ($item->resolution == 1)
                                     HD
@@ -48,14 +48,14 @@
                             <div class="icon_overlay"></div>
                             <div class="halim-post-title-box">
                                 <div class="halim-post-title ">
-                                <p class="entry-title"> {{$item->title}} </p>
-                                <p class="original_title"> {{$item->title_english}} </p>
+                                    <p class="entry-title">{{$item->title}}</p>
+                                    <p class="original_title">{{$item->title_english}}</p>
                                 </div>
                             </div>
                         </a>
-                    </div>
-                </article>
-            @endforeach
+                        </div>
+                    </article>
+                @endforeach
 
             </div>
             <div class="clearfix"></div>
@@ -70,7 +70,7 @@
                 </ul> --}}
                 {!! $movie->links("pagination::bootstrap-4") !!}
             </div>
-        </section>
+       </section>
     </main>
     <aside id="sidebar" class="col-xs-12 col-sm-12 col-md-4">
        <div id="halim_tab_popular_videos-widget-7" class="widget halim_tab_popular_videos-widget">

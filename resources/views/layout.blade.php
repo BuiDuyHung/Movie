@@ -106,15 +106,23 @@
                                      <li><a title="{{ $item->title }}" href="{{ route('home.genre', $item->slug) }}"> {{ $item->title }} </a></li>
                                  @endforeach
                             </ul>
-                         </li>
-                         <li class="mega dropdown">
+                        </li>
+                        <li class="mega dropdown">
                             <a title="Quốc Gia" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Quốc Gia<span class="caret"></span></a>
                             <ul role="menu" class=" dropdown-menu">
-                                 @foreach ($countries as $item)
-                                     <li><a title="{{ $item->title }}" href="{{ route('home.country', $item->slug) }}"> {{ $item->title }} </a></li>
-                                 @endforeach
+                                    @foreach ($countries as $item)
+                                        <li><a title="{{ $item->title }}" href="{{ route('home.country', $item->slug) }}"> {{ $item->title }} </a></li>
+                                    @endforeach
                             </ul>
-                         </li>
+                        </li>
+                        <li class="mega dropdown">
+                            <a title="Năm phim" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Năm phim<span class="caret"></span></a>
+                            <ul role="menu" class=" dropdown-menu">
+                                @for ($year = 2000; $year <= 2023; $year++)
+                                    <li><a title="{{ $year }}" href="{{ route('home.year', $year) }}">{{ $year }}</a></li>
+                                @endfor
+                            </ul>
+                        </li>
 
                         @foreach ($categories as $item)
                             <li class="mega"><a title="{{ $item->title }}" href="{{ route('home.category', $item->slug) }}"> {{ $item->title }} </a></li>

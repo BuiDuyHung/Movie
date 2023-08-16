@@ -43,9 +43,31 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Thời lượng phim :</label>
+                        <input type="text" name="time" class="form-control time {{$errors->has('time')?'is-invalid':''}}" value="{{old('time') ?? $movie->time}}">
+                        @error('time')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Slug :</label>
                         <input type="text" name="slug" class="form-control slug {{$errors->has('slug')?'is-invalid':''}}" value="{{old('slug') ?? $movie->slug}}">
                         @error('slug')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Năm sản xuất :</label>
+                        <input type="text" name="year" class="form-control year {{$errors->has('year')?'is-invalid':''}}" value="{{old('year') ?? $movie->year}}">
+                        @error('year')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
@@ -119,15 +141,6 @@
                         @enderror
                     </div>
                 </div>
-                {{-- <div class="col-6">
-                    <div class="mb-3">
-                        <label for="">Hình ảnh :</label>
-                        <input type="file" name="image" class="form-control" value="{{old('image')}}">
-                        @if ($movie)
-                            <img src="{{ asset('uploads/movie/' . ($movie->image ?? '')) }}" width="100px" alt="{{ $movie->image }}" class="mt-2">
-                        @endif
-                    </div>
-                </div> --}}
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="">Hot :</label>
@@ -190,33 +203,45 @@
                         @enderror
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <div class="mb-3">
-                    <div class="row {{$errors->has('image')?'align-items-center':'align-items-end'}}">
-                        <div class="col-7">
-                            <label for="">Hình ảnh :</label>
-                            <input type="text" id="image" name="image" class="form-control {{$errors->has('image')?'is-invalid':''}}" value="{{old('image') ?? $movie->image}}">
-                            @error('image')
-                                <div class="invalid-feedback">
-                                    {{$message}}
+
+                <div class="col-12">
+                    <div class="mb-3">
+                        <label for="">Tag :</label>
+                        <textarea id="editor" name="tag" class="form-control ckeditor {{$errors->has('tag')?'is-invalid':''}}" >{{old('tag') ?? $movie->tag}}</textarea>
+                        @error('tag')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="mb-3">
+                        <div class="row {{$errors->has('image')?'align-items-center':'align-items-end'}}">
+                            <div class="col-7">
+                                <label for="">Hình ảnh :</label>
+                                <input type="text" id="image" name="image" class="form-control {{$errors->has('image')?'is-invalid':''}}" value="{{old('image') ?? $movie->image}}">
+                                @error('image')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-2 d-grid">
+                                <button class="btn btn-primary" id="lfm" data-input="image" data-preview="holder">Chọn ảnh</button>
+                            </div>
+                            <div class="col-3">
+                                <div id="holder">
+                                    @if (old('image') || $movie->image)
+                                        <img src="{{old('image') ?? $movie->image}}" alt="">
+                                    @endif
                                 </div>
-                            @enderror
-                        </div>
-                        <div class="col-2 d-grid">
-                            <button class="btn btn-primary" id="lfm" data-input="image" data-preview="holder">Chọn ảnh</button>
-                        </div>
-                        <div class="col-3">
-                            <div id="holder">
-                                @if (old('image') || $movie->image)
-                                    <img src="{{old('image') ?? $movie->image}}" alt="">
-                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <button type="submit" class="btn btn-primary">Lưu</button>
             <a href="{{route('admin.movie.index')}}" class="btn btn-danger">Hủy</a>
         </div>

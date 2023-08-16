@@ -36,9 +36,31 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Thời lượng phim :</label>
+                        <input type="text" name="time" class="form-control time {{$errors->has('time')?'is-invalid':''}}" value="{{old('time')}}">
+                        @error('time')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Slug :</label>
                         <input type="text" name="slug" class="form-control slug {{$errors->has('slug')?'is-invalid':''}}" value="{{old('slug')}}">
                         @error('slug')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Năm sản xuất :</label>
+                        <input type="text" name="year" class="form-control year {{$errors->has('year')?'is-invalid':''}}" value="{{old('year')}}">
+                        @error('year')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
@@ -167,8 +189,19 @@
                 <div class="col-12">
                     <div class="mb-3">
                         <label for="">Mô tả :</label>
-                        <textarea id="description" name="description" class="form-control ckeditor {{$errors->has('description')?'is-invalid':''}}" >{{old('description')}}</textarea>
+                        <textarea id="editor" name="description" class="form-control ckeditor {{$errors->has('description')?'is-invalid':''}}" >{{old('description')}}</textarea>
                         @error('description')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="mb-3">
+                        <label for="">Tag :</label>
+                        <textarea id="editor" name="tag" class="form-control ckeditor {{$errors->has('tag')?'is-invalid':''}}" >{{old('tag')}}</textarea>
+                        @error('tag')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
