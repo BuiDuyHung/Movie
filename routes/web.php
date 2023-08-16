@@ -37,6 +37,7 @@ Route::get('/tap-phim', [IndexController::class, 'episode'])->name('home.episode
 Route::prefix('admin')->name('admin.')->group(function (){
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::resource('category', CategoryController::class);
+    Route::post('category/resorting', [CategoryController::class, 'resorting'])->name('resorting');
     Route::resource('country', CountryController::class);
     Route::resource('episode', EpisodeController::class);
     Route::resource('genre', GenreController::class);

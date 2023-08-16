@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('position', 'ASC')->get();
 
         return view('admincp.categories.index', compact('categories'));
     }
@@ -84,5 +85,15 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect()->route('admin.category.index')->with('msg', 'xóa danh mục thành công !');
+    }
+
+    public function resorting(Request $request){
+        $data = $request->all();
+
+        foreach($data['array_id'] as $key => $value){
+            $category = Category::find($value);
+            $category->position = $key;
+            $category->save();
+        }
     }
 }

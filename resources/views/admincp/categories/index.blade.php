@@ -30,9 +30,9 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody class="order_position">
                 @foreach ($categories as $item)
-                    <tr>
+                    <tr id="{{ $item->id }}">
                         <td> {{ $item->id }} </td>
                         <td> {{ $item->title }} </td>
                         <td> {{ $item->slug }} </td>

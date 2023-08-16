@@ -13,7 +13,7 @@ use App\Models\Watch;
 class IndexController extends Controller
 {
     public function index(){
-        $categories = Category::where('status', 1)->get();
+        $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
         $genres = Genre::all();
         $countries = Country::all();
 
@@ -23,7 +23,7 @@ class IndexController extends Controller
     }
 
     public function category($slug){
-        $categories = Category::where('status', 1)->get();
+        $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
         $genres = Genre::all();
         $countries = Country::all();
 
@@ -33,7 +33,7 @@ class IndexController extends Controller
     }
 
     public function genre($slug){
-        $categories = Category::where('status', 1)->get();
+        $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
         $genres = Genre::all();
         $countries = Country::all();
 
@@ -43,7 +43,7 @@ class IndexController extends Controller
     }
 
     public function country($slug){
-        $categories = Category::all();
+        $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
         $genres = Genre::all();
         $countries = Country::all();
 
@@ -53,7 +53,7 @@ class IndexController extends Controller
     }
 
     public function movie(){
-        $categories = Category::all();
+        $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
         $genres = Genre::all();
         $countries = Country::all();
 
@@ -61,7 +61,7 @@ class IndexController extends Controller
     }
 
     public function watch(){
-        $categories = Category::all();
+        $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
         $genres = Genre::all();
         $countries = Country::all();
 
@@ -69,7 +69,7 @@ class IndexController extends Controller
     }
 
     public function episode(){
-        $categories = Category::all();
+        $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
         $genres = Genre::all();
         $countries = Country::all();
 
