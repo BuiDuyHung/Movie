@@ -45,5 +45,8 @@ Route::prefix('admin')->name('admin.')->group(function (){
     Route::resource('watch', WatchController::class);
 });
 
+Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function () {
+    '\vendor\UniSharp\LaravelFilemanager\Lfm::routes()';
+});
 
 

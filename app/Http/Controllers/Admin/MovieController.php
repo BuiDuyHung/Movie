@@ -38,14 +38,6 @@ class MovieController extends Controller
      */
     public function store(MovieRequest $request)
     {
-        $get_image = $request->file('image');
-
-        if ($get_image) {
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . '_' . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('uploads/movie', $new_image);
-        }
 
         Movie::create([
             'title' => $request->title,
@@ -57,8 +49,9 @@ class MovieController extends Controller
             'category_id' => $request->category_id,
             'country_id' => $request->country_id,
             'hot' => $request->hot,
+            'sub' => $request->sub,
             'resolution' => $request->resolution,
-            'image' => $new_image
+            'image' => $request->image
         ]);
 
         return redirect()->route('admin.movie.index')->with('msg', 'Thêm phim thành công !');
@@ -90,33 +83,20 @@ class MovieController extends Controller
      */
     public function update(MovieRequest $request, $id)
     {
-        $data = $request->all();
-
         $movie = Movie::find($id);
-        $movie->title = $data['title'];
-        $movie->title_english = $data['title_english'];
-        $movie->slug = $data['slug'];
-        $movie->description = $data['description'];
-        $movie->status = $data['status'];
-        $movie->category_id = $data['category_id'];
-        $movie->genre_id = $data['genre_id'];
-        $movie->country_id = $data['country_id'];
-        $movie->hot = $data['hot'];
-        $movie->resolution = $data['resolution'];
 
-        $get_image = $request->file('image');
-
-        if($request->image){
-            if (!empty($movie->image)) {
-                unlink('uploads/movie/' . $movie->image);
-            }
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . '_' . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('uploads/movie', $new_image);
-            $movie->image = $new_image;
-        }
-
+        $movie->title = $request->title;
+        $movie->title_english = $request->title_english;
+        $movie->slug = $request->slug;
+        $movie->description = $request->description;
+        $movie->status = $request->status;
+        $movie->category_id = $request->category_id;
+        $movie->genre_id = $request->genre_id;
+        $movie->country_id = $request->country_id;
+        $movie->hot = $request->hot;
+        $movie->resolution = $request->resolution;
+        $movie->sub = $request->sub;
+        $movie->image = $request->image;
         $movie->save();
 
         return redirect()->route('admin.movie.index')->with('msg', 'Cập nhật phim thành công !');
@@ -128,8 +108,9 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::find($id);
-        if (!empty($movie->image)) {
-            unlink('uploads/movie/' . $movie->image);
+        if($movie){
+            deleteFileStorage($movie->image);
+
         }
         $movie->delete();
 

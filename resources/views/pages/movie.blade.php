@@ -29,7 +29,7 @@
                 </div>
                 <div class="movie_info col-xs-12">
                    <div class="movie-poster col-md-3">
-                      <img class="movie-thumb" src="{{ asset('uploads/movie/'.$movie->image) }}" alt="{{ $movie->slug }}">
+                      <img class="movie-thumb" src="{{ $movie->image }}" alt="{{ $movie->slug }}">
                       <div class="bwa-content">
                          <div class="loader"></div>
                          <a href="{{ route('home.watch') }}" class="bwac-btn">
@@ -96,7 +96,7 @@
                     <article class="thumb grid-item post-38498">
                         <div class="halim-item">
                         <a class="halim-thumb" href="{{ route('home.movie', $item->slug) }}" title="{{ $item->title }}">
-                            <figure><img class="lazy img-responsive" src="{{ asset('uploads/movie/'.$item->image) }}" alt="{{ $item->slug }}" title="{{ $item->title }}"></figure>
+                            <figure><img class="lazy img-responsive" src="{{ $item->image }}" alt="{{ $item->slug }}" title="{{ $item->title }}"></figure>
                             <span class="status">
                                 @if ($item->resolution == 1)
                                     HD

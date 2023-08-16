@@ -114,17 +114,6 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="">Hình ảnh :</label>
-                        <input type="file" name="image" class="form-control {{$errors->has('image')?'is-invalid':''}}" value="{{old('image')}}">
-                        @error('image')
-                            <div class="invalid-feedback">
-                                {{$message}}
-                            </div>
-                        @enderror
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="mb-3">
                         <label for="">Hot :</label>
                         <select class="form-select {{$errors->has('hot')?'is-invalid':''}}" name="hot" aria-label="Default select example">
                             <option value="0" selected>--chọn---</option>
@@ -133,6 +122,22 @@
                         </select>
 
                         @error('hot')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Phụ đề :</label>
+                        <select class="form-select {{$errors->has('sub')?'is-invalid':''}}" name="sub" aria-label="Default select example">
+                            <option value="0" selected>--chọn---</option>
+                            <option value="1" {{old('sub')==1 ? 'selected':false}}>Việt sub</option>
+                            <option value="2" {{old('sub')==2 ? 'selected':false}}>Thuyết minh</option>
+                        </select>
+
+                        @error('sub')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
@@ -162,7 +167,7 @@
                 <div class="col-12">
                     <div class="mb-3">
                         <label for="">Mô tả :</label>
-                        <textarea name="description" class="form-control ckeditor {{$errors->has('description')?'is-invalid':''}}" >{{old('description')}}</textarea>
+                        <textarea id="description" name="description" class="form-control ckeditor {{$errors->has('description')?'is-invalid':''}}" >{{old('description')}}</textarea>
                         @error('description')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -170,9 +175,32 @@
                         @enderror
                     </div>
                 </div>
-
+                <div class="col-12">
+                    <div class="mb-3">
+                        <div class="row  {{$errors->has('image')?'align-items-center':'align-items-end'}}">
+                            <div class="col-7">
+                                <label for="">Hình ảnh :</label>
+                                <input type="text" id="image" name="image" class="form-control {{$errors->has('image')?'is-invalid':''}}" value="{{old('image')}}">
+                                @error('image')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-2 d-grid">
+                                <button class="btn btn-primary" id="lfm" data-input="image" data-preview="holder">Chọn ảnh</button>
+                            </div>
+                            <div class="col-3">
+                                <div id="holder">
+                                    @if (old('image'))
+                                        <img src="{{old('image')}}" alt="" width="100%">
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
 
 
             <button type="submit" class="btn btn-primary">Lưu</button>
@@ -182,4 +210,5 @@
         @csrf
     </form>
 </div>
+
 @endsection

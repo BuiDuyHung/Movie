@@ -25,6 +25,7 @@ class Movie extends Model
         'country_id',
         'hot',
         'resolution',
+        'sub',
     ];
 
     public function category(){

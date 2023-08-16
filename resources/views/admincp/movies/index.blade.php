@@ -31,6 +31,7 @@
                     <th>Danh mục</th>
                     <th>Quốc gia</th>
                     <th>Hot</th>
+                    <th>Phụ đề</th>
                     <th>Định dạng</th>
                     <th>Trạng thái</th>
                     <th>Hành động</th>
@@ -42,7 +43,7 @@
                     <tr>
                         <td> {{ $item->id }} </td>
                         <td>
-                            <img src="{{asset('uploads/movie/'.$item->image)}}" width="100px" alt="{{$item->slug}}">
+                            <img src="{{$item->image}}" width="100px" alt="{{$item->slug}}">
                         </td>
                         <td> {{ $item->title }} </td>
                         <td> {{ $item->title_english }} </td>
@@ -56,6 +57,13 @@
                                 <span class="text text-success">Có</span>
                             @else
                                 <span class="text text-danger">Không</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($item->sub == 1)
+                                <span class="text text-success">Việt sub</span>
+                            @else
+                                <span class="text text-danger">Thuyết minh</span>
                             @endif
                         </td>
                         <td>
@@ -83,14 +91,13 @@
                                 <a href="{{ route('admin.movie.edit', $item->id) }}" class="badge bg-success" ><i class="fa-solid fa-pen-to-square" style="height: 20px" ></i></a>
 
 
-                                <form class="delete-form" action="{{ route('admin.movie.destroy', $item->id) }}" method="POST">
+                                <form class="delete-form" action="{{ route('admin.movie.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn badge bg-danger ms-3 delete-action"><i class="fa-solid fa-trash" style="height: 20px"></i></button>
                                 </form>
                             </div>
                         </td>
-
                     </tr>
                 @endforeach
             </tbody>

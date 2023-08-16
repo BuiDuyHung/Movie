@@ -9,6 +9,11 @@
         <li class="breadcrumb-item active">Cập nhật phim</li>
     </ol>
 
+    @if(session('msg'))
+        <div class="alert alert-success">
+            {{session('msg')}}
+        </div>
+    @endif
     <form action="{{ route('admin.movie.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
@@ -114,16 +119,15 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-6">
+                {{-- <div class="col-6">
                     <div class="mb-3">
                         <label for="">Hình ảnh :</label>
                         <input type="file" name="image" class="form-control" value="{{old('image')}}">
                         @if ($movie)
-                            <img src="{{asset('uploads/movie/'.$movie->image)}}" width="100px" alt="{{$movie->image}}" class="mt-2 ">
+                            <img src="{{ asset('uploads/movie/' . ($movie->image ?? '')) }}" width="100px" alt="{{ $movie->image }}" class="mt-2">
                         @endif
-
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="">Hot :</label>
@@ -134,6 +138,22 @@
                         </select>
 
                         @error('hot')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Phụ đề :</label>
+                        <select class="form-select {{$errors->has('sub')?'is-invalid':''}}" name="sub" aria-label="Default select example">
+                            <option value="0" selected>--chọn---</option>
+                            <option value="1" {{old('sub')==1 || $movie->sub==1 ? 'selected':false}}>Việt sub</option>
+                            <option value="2" {{old('sub')==2 || $movie->sub==2 ? 'selected':false}}>Thuyết minh</option>
+                        </select>
+
+                        @error('sub')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
@@ -162,12 +182,37 @@
                 <div class="col-12">
                     <div class="mb-3">
                         <label for="">Mô tả :</label>
-                        <textarea name="description" class="form-control ckeditor {{$errors->has('description')?'is-invalid':''}}" >{{old('description') ?? $movie->description}}</textarea>
+                        <textarea id="editor" name="description" class="form-control ckeditor {{$errors->has('description')?'is-invalid':''}}" >{{old('description') ?? $movie->description}}</textarea>
                         @error('description')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
                         @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="row {{$errors->has('image')?'align-items-center':'align-items-end'}}">
+                        <div class="col-7">
+                            <label for="">Hình ảnh :</label>
+                            <input type="text" id="image" name="image" class="form-control {{$errors->has('image')?'is-invalid':''}}" value="{{old('image') ?? $movie->image}}">
+                            @error('image')
+                                <div class="invalid-feedback">
+                                    {{$message}}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col-2 d-grid">
+                            <button class="btn btn-primary" id="lfm" data-input="image" data-preview="holder">Chọn ảnh</button>
+                        </div>
+                        <div class="col-3">
+                            <div id="holder">
+                                @if (old('image') || $movie->image)
+                                    <img src="{{old('image') ?? $movie->image}}" alt="">
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

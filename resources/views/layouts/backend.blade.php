@@ -38,6 +38,7 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
         <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.all.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -47,9 +48,13 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
         <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+        <script src="{{ asset('ckeditor/config.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
+        <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+
 
         <script>
+            $('#lfm').filemanager('image');
             let table = new DataTable('#dataTable');
 
             $('.order_position').sortable({
@@ -74,7 +79,19 @@
                 }
             });
 
+        </script>
 
+        <script>
+            var options = {
+            filebrowserImageBrowseUrl: 'filemanager?type=Images',
+            filebrowserImageUploadUrl: 'filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: 'filemanager?type=Files',
+            filebrowserUploadUrl: 'filemanager/upload?type=Files&_token='
+            };
+        </script>
+
+        <script>
+            CKEDITOR.replace('description', options);
         </script>
     </body>
 </html>
