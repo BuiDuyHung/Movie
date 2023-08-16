@@ -127,12 +127,32 @@
                     <div class="mb-3">
                         <label for="">Hot :</label>
                         <select class="form-select {{$errors->has('hot')?'is-invalid':''}}" name="hot" aria-label="Default select example">
-                            <option value="0" selected>--chọn trạng thái---</option>
+                            <option value="0" selected>--chọn---</option>
                             <option value="1" {{old('hot')==1 ? 'selected':false}}>Hiển thị</option>
                             <option value="2" {{old('hot')==2 ? 'selected':false}}>Không hiển thị</option>
                         </select>
 
                         @error('hot')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Định dạng :</label>
+                        <select class="form-select {{$errors->has('resolution')?'is-invalid':''}}" name="resolution" aria-label="Default select example">
+                            <option value="0" selected>--chọn định dạng---</option>
+                            <option value="1" {{old('resolution')==1 ? 'selected':false}}>HD</option>
+                            <option value="2" {{old('resolution')==2 ? 'selected':false}}>SD</option>
+                            <option value="3" {{old('resolution')==3 ? 'selected':false}}>HDCam</option>
+                            <option value="4" {{old('resolution')==4 ? 'selected':false}}>Cam</option>
+                            <option value="5" {{old('resolution')==4 ? 'selected':false}}>FullHD</option>
+
+                        </select>
+
+                        @error('resolution')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>

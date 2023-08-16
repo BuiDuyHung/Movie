@@ -15,9 +15,22 @@
             @foreach ($movie_hot as $item)
                 <article class="thumb grid-item post-38498">
                     <div class="halim-item">
-                        <a class="halim-thumb" href="{{ route('home.movie') }}" title="{{$item->title}}">
+                        <a class="halim-thumb" href="{{ route('home.movie', $item->slug) }}" title="{{$item->title}}">
                             <figure><img class="lazy img-responsive" src="{{ asset('uploads/movie/'.$item->image) }}" alt="{{$item->slug}}" title="{{$item->title}}"></figure>
-                            <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span>
+                            <span class="status">
+                                @if ($item->resolution == 1)
+                                    HD
+                                @elseif ($item->resolution == 2)
+                                    SD
+                                @elseif ($item->resolution == 3)
+                                    HDCam
+                                @elseif ($item->resolution == 4)
+                                    Cam
+                                @else
+                                    FullHD
+                                @endif
+                            </span>
+                            <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span>
                             <div class="icon_overlay"></div>
                             <div class="halim-post-title-box">
                             <div class="halim-post-title ">
@@ -66,7 +79,7 @@
         @foreach ($categories_home as $category_home)
             <section id="halim-advanced-widget-2">
                 <div class="section-heading">
-                    <a href="danhmuc.php" title="{{ $category_home->title }}">
+                    <a href="#" title="{{ $category_home->title }}">
                     <span class="h-text"> {{ $category_home->title }} </span>
                     </a>
                 </div>
@@ -74,9 +87,22 @@
                     @foreach ($category_home->movies->take(12) as $item)
                         <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-37606">
                             <div class="halim-item">
-                                <a class="halim-thumb" href="chitiet.php">
+                                <a class="halim-thumb" href="{{ route('home.movie', $item->slug) }}">
                                     <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/'.$item->image)}}" alt="{{ $item->slug }}" title="{{ $item->title }}"></figure>
-                                    <span class="status">TẬP 15</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span>
+                                    <span class="status">
+                                        @if ($item->resolution == 1)
+                                            HD
+                                        @elseif ($item->resolution == 2)
+                                            SD
+                                        @elseif ($item->resolution == 3)
+                                            HDCam
+                                        @elseif ($item->resolution == 4)
+                                            Cam
+                                        @else
+                                            FullHD
+                                        @endif
+                                    </span>
+                                    <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span>
                                     <div class="icon_overlay"></div>
                                     <div class="halim-post-title-box">
                                     <div class="halim-post-title ">

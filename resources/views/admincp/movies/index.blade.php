@@ -31,6 +31,7 @@
                     <th>Danh mục</th>
                     <th>Quốc gia</th>
                     <th>Hot</th>
+                    <th>Định dạng</th>
                     <th>Trạng thái</th>
                     <th>Hành động</th>
                 </tr>
@@ -55,6 +56,19 @@
                                 <span class="text text-success">Có</span>
                             @else
                                 <span class="text text-danger">Không</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($item->resolution == 1)
+                                <span class="text text-success">HD</span>
+                            @elseif ($item->resolution == 2)
+                                <span class="text text-success">SD</span>
+                            @elseif ($item->resolution == 3)
+                                <span class="text text-success">HDCam</span>
+                            @elseif ($item->resolution == 4)
+                                <span class="text text-success">Cam</span>
+                            @else
+                                <span class="text text-success">FullHD</span>
                             @endif
                         </td>
                         <td>

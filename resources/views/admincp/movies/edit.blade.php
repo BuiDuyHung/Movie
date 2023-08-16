@@ -140,6 +140,25 @@
                         @enderror
                     </div>
                 </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Định dạng :</label>
+                        <select class="form-select {{$errors->has('resolution')?'is-invalid':''}}" name="resolution" aria-label="Default select example">
+                            <option value="0" selected>--chọn định dạng---</option>
+                            <option value="1" {{old('resolution')==1 || $movie->resolution==1 ? 'selected':false}}>HD</option>
+                            <option value="2" {{old('resolution')==2 || $movie->resolution==2 ? 'selected':false}}>SD</option>
+                            <option value="3" {{old('resolution')==3 || $movie->resolution==2 ? 'selected':false}}>HDCam</option>
+                            <option value="4" {{old('resolution')==4 || $movie->resolution==2 ? 'selected':false}}>Cam</option>
+                            <option value="5" {{old('resolution')==5 || $movie->resolution==2 ? 'selected':false}}>FullHD</option>
+                        </select>
+
+                        @error('resolution')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
                 <div class="col-12">
                     <div class="mb-3">
                         <label for="">Mô tả :</label>

@@ -29,7 +29,7 @@ Route::get('/', [IndexController::class, 'index'])->name('home.index');
 Route::get('/danh-muc/{slug}', [IndexController::class, 'category'])->name('home.category');
 Route::get('/the-loai/{slug}', [IndexController::class, 'genre'])->name('home.genre');
 Route::get('/quoc-gia/{slug}', [IndexController::class, 'country'])->name('home.country');
-Route::get('/phim', [IndexController::class, 'movie'])->name('home.movie');
+Route::get('/phim/{slug}', [IndexController::class, 'movie'])->name('home.movie');
 Route::get('/xem-phim', [IndexController::class, 'watch'])->name('home.watch');
 Route::get('/tap-phim', [IndexController::class, 'episode'])->name('home.episode');
 

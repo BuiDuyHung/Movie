@@ -38,6 +38,11 @@ class MovieRequest extends FormRequest
                     $fail('Vui lòng chọn hot');
                 }
             }],
+            'resolution' => ['required', 'integer', function($attribute, $value, $fail) {
+                if($value == '0'){
+                    $fail('Vui lòng chọn định dạng');
+                }
+            }],
             'genre_id' => ['required', 'integer', function($attribute, $value, $fail) {
                 if($value == '0'){
                     $fail('Vui lòng chọn thể loại');
@@ -77,6 +82,7 @@ class MovieRequest extends FormRequest
             'status' => 'Trạng thái',
             'image' => 'Hình ảnh',
             'Hot' => 'Hot',
+            'resolution' => 'Định dạng',
             'genre_id' => 'Thể loại',
             'category_id' => 'Danh mục',
             'country_id' => 'Quốc gia',
