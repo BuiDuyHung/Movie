@@ -18,17 +18,19 @@
         </div>
     </div>
     <div class="table-responsive">
-        <table id="datatable" class="table table-bordered">
+        <table id="dataTable" class="table">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Hình ảnh</th>
                     <th>Tên</th>
+                    <th>Tên tiếng anh</th>
                     <th>Slug</th>
                     <th>Mô tả</th>
                     <th>Thể loại</th>
                     <th>Danh mục</th>
                     <th>Quốc gia</th>
+                    <th>Hot</th>
                     <th>Trạng thái</th>
                     <th>Hành động</th>
                 </tr>
@@ -42,11 +44,19 @@
                             <img src="{{asset('uploads/movie/'.$item->image)}}" width="100px" alt="{{$item->slug}}">
                         </td>
                         <td> {{ $item->title }} </td>
+                        <td> {{ $item->title_english }} </td>
                         <td> {{ $item->slug }} </td>
                         <td> {!! $item->description !!} </td>
                         <td> {{ $item->genre->title }} </td>
                         <td> {{ $item->category->title }} </td>
                         <td> {{ $item->country->title }} </td>
+                        <td>
+                            @if ($item->hot == 1)
+                                <span class="text text-success">Có</span>
+                            @else
+                                <span class="text text-danger">Không</span>
+                            @endif
+                        </td>
                         <td>
                             @if ($item->status == 1)
                                 <span class="text text-success">Hiển thị</span>

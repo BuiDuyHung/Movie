@@ -49,12 +49,14 @@ class MovieController extends Controller
 
         Movie::create([
             'title' => $request->title,
+            'title_english' => $request->title_english,
             'slug' => $request->slug,
             'description' => $request->description,
             'status' => $request->status,
             'genre_id' => $request->genre_id,
             'category_id' => $request->category_id,
             'country_id' => $request->country_id,
+            'hot' => $request->hot,
             'image' => $new_image
         ]);
 
@@ -91,12 +93,14 @@ class MovieController extends Controller
 
         $movie = Movie::find($id);
         $movie->title = $data['title'];
+        $movie->title_english = $data['title_english'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
         $movie->status = $data['status'];
         $movie->category_id = $data['category_id'];
         $movie->genre_id = $data['genre_id'];
         $movie->country_id = $data['country_id'];
+        $movie->hot = $data['hot'];
 
         $get_image = $request->file('image');
 

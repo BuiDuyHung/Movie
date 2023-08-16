@@ -23,12 +23,19 @@ class MovieRequest extends FormRequest
     {
         $rules =[
             'title' => 'required|min:6',
+            'title_english' => 'required|min:6',
             'slug' => 'required|min:6',
             'description' => 'required|min:6',
             'image' => 'required',
+
             'status' => ['required', 'integer', function($attribute, $value, $fail) {
                 if($value == '0'){
                     $fail('Vui lòng chọn trạng thái');
+                }
+            }],
+            'hot' => ['required', 'integer', function($attribute, $value, $fail) {
+                if($value == '0'){
+                    $fail('Vui lòng chọn hot');
                 }
             }],
             'genre_id' => ['required', 'integer', function($attribute, $value, $fail) {
@@ -64,10 +71,12 @@ class MovieRequest extends FormRequest
     {
         return [
             'title' => 'Tiêu đề',
+            'title_english' => 'Tiêu đề tiếng anh',
             'slug' => 'Slug',
             'description' => 'Mô tả',
             'status' => 'Trạng thái',
             'image' => 'Hình ảnh',
+            'Hot' => 'Hot',
             'genre_id' => 'Thể loại',
             'category_id' => 'Danh mục',
             'country_id' => 'Quốc gia',

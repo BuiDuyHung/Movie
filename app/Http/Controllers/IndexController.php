@@ -17,9 +17,10 @@ class IndexController extends Controller
         $genres = Genre::all();
         $countries = Country::all();
 
+        $movie_hot = Movie::where('status', 1)->get();
         $categories_home = Category::with('movies')->where('status', 1)->get();
 
-        return view('pages.home', compact('categories', 'genres', 'countries', 'categories_home'));
+        return view('pages.home', compact('categories', 'genres', 'countries', 'categories_home', 'movie_hot'));
     }
 
     public function category($slug){

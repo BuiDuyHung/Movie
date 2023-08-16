@@ -11,7 +11,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Admin - Website Movie</title>
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.min.css">
+        <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
@@ -36,6 +38,7 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.all.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -47,7 +50,9 @@
         <script src="{{ asset('js/scripts.js') }}"></script>
 
         <script>
-           $('.order_position').sortable({
+            let table = new DataTable('#dataTable');
+
+            $('.order_position').sortable({
                 placeholder: 'ui-state-highlight',
                 update: function(event, ui) {
                     var array_id = [];
@@ -59,7 +64,7 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: "{{ route('admin.resorting') }}", // Update the route name
+                        url: "{{ route('admin.resorting') }}",
                         method: "POST",
                         data: { array_id: array_id },
                         success: function(data) {
@@ -68,6 +73,8 @@
                     });
                 }
             });
+
+
         </script>
     </body>
 </html>

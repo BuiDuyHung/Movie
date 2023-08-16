@@ -14,12 +14,22 @@
         @csrf
         <div class="container">
             <div class="row">
-
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="">Tên :</label>
                         <input type="text" name="title" class="form-control title {{$errors->has('title')?'is-invalid':''}}" value="{{old('title') ?? $movie->title}}">
                         @error('title')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Tên tiếng anh :</label>
+                        <input type="text" name="title_english" class="form-control title_english {{$errors->has('title_english')?'is-invalid':''}}" value="{{old('title_english') ?? $movie->title_english}}">
+                        @error('title_english')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
@@ -112,6 +122,22 @@
                             <img src="{{asset('uploads/movie/'.$movie->image)}}" width="100px" alt="{{$movie->image}}" class="mt-2 ">
                         @endif
 
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Hot :</label>
+                        <select class="form-select {{$errors->has('hot')?'is-invalid':''}}" name="hot" aria-label="Default select example">
+                            <option value="0" selected>--chọn trạng thái---</option>
+                            <option value="1" {{old('hot')==1 || $movie->hot==1 ? 'selected':false}}>Hiển thị</option>
+                            <option value="2" {{old('hot')==2 || $movie->hot==2 ? 'selected':false}}>Không hiển thị</option>
+                        </select>
+
+                        @error('hot')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-12">

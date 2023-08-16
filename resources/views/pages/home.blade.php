@@ -7,7 +7,32 @@
           <div class="ajax"></div>
        </div>
     </div>
-    <div class="col-xs-12 carausel-sliderWidget">
+    <div id="halim_related_movies-2xx" class="wrap-slider">
+        <div class="section-bar clearfix">
+           <h3 class="section-title"><span>PHIM HOT</span></h3>
+        </div>
+        <div id="halim_related_movies-2" class="owl-carousel owl-theme related-film">
+            @foreach ($movie_hot as $item)
+                <article class="thumb grid-item post-38498">
+                    <div class="halim-item">
+                        <a class="halim-thumb" href="{{ route('home.movie') }}" title="{{$item->title}}">
+                            <figure><img class="lazy img-responsive" src="{{ asset('uploads/movie/'.$item->image) }}" alt="{{$item->slug}}" title="{{$item->title}}"></figure>
+                            <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span>
+                            <div class="icon_overlay"></div>
+                            <div class="halim-post-title-box">
+                            <div class="halim-post-title ">
+                                <p class="entry-title">{{$item->title}}</p>
+                                <p class="original_title">{{$item->title_english}}</p>
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                </article>
+            @endforeach
+
+        </div>
+    </div>
+    {{-- <div class="col-xs-12 carausel-sliderWidget">
        <section id="halim-advanced-widget-4">
           <div class="section-heading">
              <a href="danhmuc.php" title="Phim Chiếu Rạp">
@@ -36,7 +61,7 @@
           </div>
        </section>
        <div class="clearfix"></div>
-    </div>
+    </div> --}}
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
         @foreach ($categories_home as $category_home)
             <section id="halim-advanced-widget-2">
@@ -56,7 +81,7 @@
                                     <div class="halim-post-title-box">
                                     <div class="halim-post-title ">
                                         <p class="entry-title"> {{ $item->title }} </p>
-                                        <p class="original_title">My Roommate Is a Gumiho</p>
+                                        <p class="original_title">{{ $item->title_english }}</p>
                                     </div>
                                     </div>
                                 </a>

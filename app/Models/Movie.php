@@ -15,6 +15,7 @@ class Movie extends Model
 
     protected $fillable = [
         'title',
+        'title_english',
         'slug',
         'image',
         'description',
@@ -22,6 +23,7 @@ class Movie extends Model
         'genre_id',
         'category_id',
         'country_id',
+        'hot',
     ];
 
     public function category(){
