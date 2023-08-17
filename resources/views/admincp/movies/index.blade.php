@@ -27,7 +27,7 @@
                     <th>Tên tiếng anh</th>
                     <th>Thời lượng phim</th>
                     <th>Slug</th>
-                    <th>Mô tả</th>
+                    {{-- <th>Mô tả</th> --}}
                     <th>Thể loại</th>
                     <th>Danh mục</th>
                     <th>Quốc gia</th>
@@ -38,6 +38,7 @@
                     <th>Trạng thái</th>
                     <th>Top view</th>
                     <th>Năm sản xuất</th>
+                    <th>Season</th>
                     <th>Ngày tạo</th>
                     <th>Ngày cập nhật</th>
                     <th>Hành động</th>
@@ -55,7 +56,7 @@
                         <td> {{ $item->title_english }} </td>
                         <td> {{ $item->time }} </td>
                         <td> {{ $item->slug }} </td>
-                        <td> {!! $item->description !!} </td>
+                        {{-- <td> {!! $item->description !!} </td> --}}
                         <td> {{ $item->genre->title }} </td>
                         <td> {{ $item->category->title }} </td>
                         <td> {{ $item->country->title }} </td>
@@ -95,25 +96,24 @@
                             @endif
                         </td>
                         <td>
-                            @if ($item->topview == 1)
-                                <span class="text text-success">Ngày</span>
-                            @elseif ($item->topview == 2)
-                                <span class="text text-success">Tuần</span>
-                            @elseif ($item->topview == 3)
-                                <span class="text text-success">Tháng</span>
-                            @else
-                                <span class="text text-success">Null</span>
-                            @endif
+                            <select class="select-topview" name="topview" id="{{$item->id}}">
+                                <option value="1" {{ $item->topview == 1 ? 'selected':'' }}>Ngày</option>
+                                <option value="2" {{ $item->topview == 2 ? 'selected':'' }}>Tuần</option>
+                                <option value="3" {{ $item->topview == 3 ? 'selected':'' }}>Tháng</option>
+                            </select>
                         </td>
                         <td>
                             <select name="year" id="{{$item->id}}" class="select-year">
-                                @if (isset($item->year))
-                                    <option value="{{ $item->year }}">{{ $item->year }}</option>
-                                @else
-                                    @for ($year = 2000; $year <= 2023; $year++)
-                                        <option value="{{ $year }}">{{ $year }}</option>
-                                    @endfor
-                                @endif
+                                @for ($year = 2000; $year <= 2023; $year++)
+                                    <option value="{{ $year }}" {{ $item->year == $year ? 'selected':'' }}>{{ $year }}</option>
+                                @endfor
+                            </select>
+                        </td>
+                        <td>
+                            <select name="season" id="{{$item->id}}" class="select-season">
+                                @for ($season = 0; $season <= 20; $season++)
+                                    <option value="{{ $season }}" {{ $item->season == $season ? 'selected':'' }}>{{ $season }}</option>
+                                @endfor
                             </select>
                         </td>
                         <td> {{ $item->created_at }} </td>

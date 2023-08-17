@@ -54,6 +54,23 @@
         <script src="{{ asset('js/scripts.js') }}"></script>
         <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
+        <script>
+            $('.select-season').change(function(){
+                var season = $(this).find(':selected').val()
+                var id_movie = $(this).attr('id')
+                $.ajax({
+                    url: "{{ route('admin.update_season') }}",
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {season: season, id_movie: id_movie},
+                    success: function(){
+                        alert('Thay đổi phim theo season '+season+' thành công !')
+                    }
+                })
+            })
+        </script>
 
         <script>
             $('.select-year').change(function(){
@@ -61,14 +78,45 @@
                 var id_movie = $(this).attr('id')
                 $.ajax({
                     url: "{{ route('admin.update_year') }}",
-                    method: 'GET',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     data: {year: year, id_movie: id_movie},
                     success: function(){
                         alert('Thay đổi năm phim theo năm '+year+' thành công !')
                     }
                 })
             })
+        </script>
 
+
+        <script>
+            $('.select-topview').change(function(){
+                var topview = $(this).find(':selected').val();
+                var id_movie = $(this).attr('id');
+                var text;
+
+                if (topview == 1) {
+                    text = 'Ngày';
+                } else if (topview == 2) {
+                    text = 'Tuần';
+                } else {
+                    text = 'Tháng';
+                }
+
+                $.ajax({
+                    url: "{{ route('admin.update_topview') }}",
+                    method: 'GET',
+                    data: {topview: topview, id_movie: id_movie},
+                    success: function(){
+                        alert('Thay đổi năm phim theo topview ' + text + ' thành công !');
+                    }
+                });
+            });
+        </script>
+
+        <script>
             $('#lfm').filemanager('image');
             let table = new DataTable('#dataTable');
 

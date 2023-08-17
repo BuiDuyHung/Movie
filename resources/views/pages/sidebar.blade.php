@@ -55,81 +55,26 @@
 
 
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Ngày</a>
+            <li class="nav-item active">
+              <a class="nav-link filter-sidebar" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Ngày</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Tuần</a>
+              <a class="nav-link filter-sidebar" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Tuần</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Tháng</a>
+              <a class="nav-link filter-sidebar" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Tháng</a>
             </li>
-        </ul>
+          </ul>
 
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                @foreach ($movie_topview_day as $item)
-                    <div id="halim-ajax-popular-post" class="popular-post">
-                        <div class="item post-37176">
-                            <a href="{{ route('home.movie', $item->slug) }}" title=" {{ $item->title }} ">
-                            <div class="item-link">
-                                <img src="{{ $item->image }}" class="lazy post-thumb" alt=" {{ $item->slug }} " title=" {{ $item->title }} " />
-                                <span class="is_trailer">Trailer</span>
-                            </div>
-                            <p class="title"> {{ $item->title }} </p>
-                            </a>
-                            <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
-                            <div style="float: left;">
-                            <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
-                            <span style="width: 0%"></span>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+            <div id="halim-ajax-popular-post-default" class="popular-post">
+                <span id="show_data_default"></span>
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                @foreach ($movie_topview_week as $item)
-                    <div id="halim-ajax-popular-post" class="popular-post">
-                        <div class="item post-37176">
-                            <a href="{{ route('home.movie', $item->slug) }}" title=" {{ $item->title }} ">
-                            <div class="item-link">
-                                <img src="{{ $item->image }}" class="lazy post-thumb" alt=" {{ $item->slug }} " title=" {{ $item->title }} " />
-                                <span class="is_trailer">Trailer</span>
-                            </div>
-                            <p class="title"> {{ $item->title }} </p>
-                            </a>
-                            <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
-                            <div style="float: left;">
-                            <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
-                            <span style="width: 0%"></span>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-home-tab">
+                <span id="show_data"></span>
             </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                @foreach ($movie_topview_month as $item)
-                    <div id="halim-ajax-popular-post" class="popular-post">
-                        <div class="item post-37176">
-                            <a href="{{ route('home.movie', $item->slug) }}" title=" {{ $item->title }} ">
-                            <div class="item-link">
-                                <img src="{{ $item->image }}" class="lazy post-thumb" alt=" {{ $item->slug }} " title=" {{ $item->title }} " />
-                                <span class="is_trailer">Trailer</span>
-                            </div>
-                            <p class="title"> {{ $item->title }} </p>
-                            </a>
-                            <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
-                            <div style="float: left;">
-                            <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
-                            <span style="width: 0%"></span>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+
         </div>
 
         <div class="clearfix"></div>

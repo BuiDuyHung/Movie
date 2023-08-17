@@ -44,7 +44,14 @@ Route::prefix('admin')->name('admin.')->group(function (){
     Route::resource('episode', EpisodeController::class);
     Route::resource('genre', GenreController::class);
     Route::resource('movie', MovieController::class);
-    Route::get('/update-year-movie', [MovieController::class, 'update_year'])->name('update_year');
+
+    Route::post('/update-year-movie', [MovieController::class, 'update_year'])->name('update_year');
+    Route::get('/update-topview-movie', [MovieController::class, 'update_topview'])->name('update_topview');
+    Route::post('/update-season-movie', [MovieController::class, 'update_season'])->name('update_season');
+
+    Route::post('/filter-topview-movie', [MovieController::class, 'filter_topview'])->name('filter_topview');
+    Route::get('/filter-topview-default', [MovieController::class, 'filter_default'])->name('filter_default');
+
     Route::resource('watch', WatchController::class);
 });
 

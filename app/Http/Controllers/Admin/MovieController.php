@@ -133,4 +133,94 @@ class MovieController extends Controller
         $movie->year = $data['year'];
         $movie->save();
     }
+
+    public function update_season(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['id_movie']);
+        $movie->season = $data['season'];
+        $movie->save();
+    }
+
+    public function update_topview(Request $request){
+        $data = $request->all();
+        $movie = Movie::find($data['id_movie']);
+        $movie->topview = $data['topview'];
+        $movie->save();
+    }
+
+    public function filter_topview(Request $request){
+        $data = $request->all();
+        $movie = Movie::where('topview', $data['value'])->orderBy('updated_at', 'DESC')->take(10)->get();
+        $output = '';
+        foreach($movie as $item){
+            if($item->resolution == 1){
+                $text = 'HD';
+            }elseif($item->resolution == 2){
+                $text = 'SD';
+            }elseif($item->resolution == 3){
+                $text = 'HDCam';
+            }elseif($item->resolution == 4){
+                $text = 'Cam';
+            }else{
+                $text = 'FullHD';
+            }
+
+            $output .= '<div id="halim-ajax-popular-post" class="popular-post" style="popular-post: 0;">
+                            <div class="item post-37176">
+                                <a href="'. route('home.movie', $item->slug) .'" title="'.$item->title.'">
+                                <div class="item-link">
+                                    <img src="'.$item->image.'" class="lazy post-thumb" alt="'.$item->slug.'" title="'.$item->title.'" />
+                                    <span class="is_trailer">'.$text.'</span>
+                                </div>
+                                <p class="title">'.$item->title.'</p>
+                                </a>
+                                <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
+                                <div style="float: left;">
+                                <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
+                                <span style="width: 0%"></span>
+                                </span>
+                                </div>
+                            </div>
+                        </div>';
+        }
+
+        echo $output;
+    }
+
+    public function filter_default(Request $request){
+        $data = $request->all();
+        $movie = Movie::where('topview', 1)->orderBy('updated_at', 'DESC')->take(6)->get();
+        $output = '';
+        foreach($movie as $item){
+            if($item->resolution == 1){
+                $text = 'HD';
+            }elseif($item->resolution == 2){
+                $text = 'SD';
+            }elseif($item->resolution == 3){
+                $text = 'HDCam';
+            }elseif($item->resolution == 4){
+                $text = 'Cam';
+            }else{
+                $text = 'FullHD';
+            }
+
+            $output .= '<div class="item post-37176">
+                                <a href="'. route('home.movie', $item->slug) .'" title="'.$item->title.'">
+                                <div class="item-link">
+                                    <img src="'.$item->image.'" class="lazy post-thumb" alt="'.$item->slug.'" title="'.$item->title.'" />
+                                    <span class="is_trailer">'.$text.'</span>
+                                </div>
+                                <p class="title">'.$item->title.'</p>
+                                </a>
+                                <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
+                                <div style="float: left;">
+                                <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
+                                <span style="width: 0%"></span>
+                                </span>
+                                </div>
+                            </div>';
+        }
+
+        echo $output;
+    }
 }

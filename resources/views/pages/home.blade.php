@@ -37,6 +37,11 @@
                                     Thuyết minh
                                 @endif
                             </span>
+                            @if ($item->season!=0)
+                                <span class="season"><i class="fa fa-play" aria-hidden="true"></i>
+                                    Season {{$item->season}}
+                                </span>
+                            @endif
                             <div class="icon_overlay"></div>
                             <div class="halim-post-title-box">
                             <div class="halim-post-title ">
@@ -115,6 +120,13 @@
                                             Thuyết minh
                                         @endif
                                     </span>
+
+                                    @if ($item->season!=0)
+                                        <span class="season"><i class="fa fa-play" aria-hidden="true"></i>
+                                            Season {{$item->season}}
+                                        </span>
+                                    @endif
+
                                     <div class="icon_overlay"></div>
                                     <div class="halim-post-title-box">
                                     <div class="halim-post-title ">

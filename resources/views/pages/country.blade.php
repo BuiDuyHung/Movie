@@ -41,10 +41,21 @@
                             <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                                 @if ($item->sub == 1)
                                     Việt sub
+                                    @if ($item->season!=0)
+                                        - Season {{$item->season}}
+                                    @endif
                                 @else
                                     Thuyết minh
+                                    @if ($item->season!=0)
+                                        - Season {{$item->season}}
+                                    @endif
                                 @endif
                             </span>
+                            @if ($item->season!=0)
+                                <span class="season"><i class="fa fa-play" aria-hidden="true"></i>
+                                    Season {{$item->season}}
+                                </span>
+                            @endif
                             <div class="icon_overlay"></div>
                             <div class="halim-post-title-box">
                                 <div class="halim-post-title ">

@@ -2,6 +2,8 @@
 <html lang="vi">
    <head>
       <meta charset="utf-8" />
+
+      <meta name="csrf-token" content="{{ csrf_token() }}" />
       <meta content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
       <meta name="theme-color" content="#234556">
       <meta http-equiv="Content-Language" content="vi" />
@@ -9,19 +11,18 @@
       <meta name="DC.language" scheme="utf-8" content="vi" />
       <meta name="language" content="Việt Nam">
 
-
       <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" />
       <meta name="revisit-after" content="1 days" />
       <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
       <title>Phim hay - Xem phim hay nhất</title>
-      {{-- <meta name="description" content="Phim hay 2021 - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" /> --}}
-      {{-- <link rel="canonical" href=""> --}}
-      {{-- <link rel="next" href="" /> --}}
-      {{-- <meta property="og:locale" content="vi_VN" /> --}}
-      {{-- <meta property="og:title" content="Phim hay 2020 - Xem phim hay nhất" /> --}}
-      {{-- <meta property="og:description" content="Phim hay 2020 - Xem phim hay nhất, phim hay trung quốc, hàn quốc, việt nam, mỹ, hong kong , chiếu rạp" /> --}}
-      {{-- <meta property="og:url" content="" /> --}}
-      {{-- <meta property="og:site_name" content="Phim hay 2021- Xem phim hay nhất" /> --}}
+      <meta name="description" content="Phim hay 2023 - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" />
+      <link rel="canonical" href="">
+      <link rel="next" href="" />
+      <meta property="og:locale" content="vi_VN" />
+      <meta property="og:title" content="Phim hay 2022 - Xem phim hay nhất" />
+      <meta property="og:description" content="Phim hay 2022 - Xem phim hay nhất, phim hay trung quốc, hàn quốc, việt nam, mỹ, hong kong , chiếu rạp" />
+      <meta property="og:url" content="" />
+      <meta property="og:site_name" content="Phim hay 2021- Xem phim hay nhất" />
       <meta property="og:image" content="" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="55" />
@@ -167,12 +168,49 @@
       </footer>
       <div id='easy-top'></div>
 
-      <script type='text/javascript' src='{{ asset('js/bootstrap.min.js') }}' id='bootstrap-js'></script>
-      <script type='text/javascript' src='{{ asset('js/owl.carousel.min.js') }}' id='carousel-js'></script>
+        <script type='text/javascript' src='{{ asset('js/bootstrap.min.js') }}' id='bootstrap-js'></script>
+        <script type='text/javascript' src='{{ asset('js/owl.carousel.min.js') }}' id='carousel-js'></script>
+        <script type='text/javascript' src='{{ asset('js/halimtheme-core.min.js') }}' id='halim-init-js'></script>
 
-      <script type='text/javascript' src='{{ asset('js/halimtheme-core.min.js') }}' id='halim-init-js'></script>
+        <script>
+            $(document).ready(function(){
+                $.ajax({
+                    url: "{{ route('admin.filter_default') }}",
+                    method: "GET",
+                    success: function(data){
+                        $('#show_data_default').html(data);
+                    }
+                });
+
+                $('.filter-sidebar').click(function(){
+                    var href = $(this).attr('href');
+                    var value;
+
+                    if (href === '#pills-home') {
+                        value = 1;
+                    } else if (href === '#pills-profile') {
+                        value = 2;
+                    } else {
+                        value = 3;
+                    }
+
+                    $.ajax({
+                        url: "{{ route('admin.filter_topview') }}",
+                        method: "POST",
+                        data: {value: value},
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(data){
+                            $('#halim-ajax-popular-post-default').css("display", "none");
+                            $('#show_data').html(data);
+                        }
+                    });
+                });
+            })
 
 
+        </script>
 
 
       <style>#overlay_mb{position:fixed;display:none;width:100%;height:100%;top:0;left:0;right:0;bottom:0;background-color:rgba(0, 0, 0, 0.7);z-index:99999;cursor:pointer}#overlay_mb .overlay_mb_content{position:relative;height:100%}.overlay_mb_block{display:inline-block;position:relative}#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:600px;height:auto;position:relative;left:50%;top:50%;transform:translate(-50%, -50%);text-align:center}#overlay_mb .overlay_mb_content .cls_ov{color:#fff;text-align:center;cursor:pointer;position:absolute;top:5px;right:5px;z-index:999999;font-size:14px;padding:4px 10px;border:1px solid #aeaeae;background-color:rgba(0, 0, 0, 0.7)}#overlay_mb img{position:relative;z-index:999}@media only screen and (max-width: 768px){#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:400px;top:3%;transform:translate(-50%, 3%)}}@media only screen and (max-width: 400px){#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:310px;top:3%;transform:translate(-50%, 3%)}}</style>
