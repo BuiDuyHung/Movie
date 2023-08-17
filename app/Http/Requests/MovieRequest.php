@@ -28,6 +28,7 @@ class MovieRequest extends FormRequest
             'description' => 'required|min:6',
             'image' => 'required',
             'time' => 'required',
+            'topview' => 'required',
             'tag' => 'required',
             'year' => 'required|integer',
 
@@ -98,6 +99,7 @@ class MovieRequest extends FormRequest
             'year' => 'Năm sản xuất',
             'time' => 'Thời lượng phim',
             'tag' => 'Tag',
+            'topview' => 'Top view',
         ];
     }
 }

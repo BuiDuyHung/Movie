@@ -10,9 +10,9 @@
       <meta name="language" content="Việt Nam">
 
 
-      {{-- <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" /> --}}
-      {{-- <meta name="revisit-after" content="1 days" /> --}}
-      {{-- <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' /> --}}
+      <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" />
+      <meta name="revisit-after" content="1 days" />
+      <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
       <title>Phim hay - Xem phim hay nhất</title>
       {{-- <meta name="description" content="Phim hay 2021 - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" /> --}}
       {{-- <link rel="canonical" href=""> --}}
@@ -22,22 +22,23 @@
       {{-- <meta property="og:description" content="Phim hay 2020 - Xem phim hay nhất, phim hay trung quốc, hàn quốc, việt nam, mỹ, hong kong , chiếu rạp" /> --}}
       {{-- <meta property="og:url" content="" /> --}}
       {{-- <meta property="og:site_name" content="Phim hay 2021- Xem phim hay nhất" /> --}}
-      {{-- <meta property="og:image" content="" /> --}}
-      {{-- <meta property="og:image:width" content="300" /> --}}
-      {{-- <meta property="og:image:height" content="55" /> --}}
+      <meta property="og:image" content="" />
+      <meta property="og:image:width" content="300" />
+      <meta property="og:image:height" content="55" />
+
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-      {{-- <link rel='dns-prefetch' href='//s.w.org' /> --}}
+      <link rel='dns-prefetch' href='//s.w.org' />
 
-      <link rel='stylesheet' id='bootstrap-css' href='{{ asset('css/bootstrap.min.css?ver=5.7.2') }}' media='all' />
-      <link rel='stylesheet' id='style-css' href='{{ asset('css/style.css?ver=5.7.2') }}' media='all' />
-      <link rel='stylesheet' id='wp-block-library-css' href='{{ asset('css/style.min.css?ver=5.7.2') }}' media='all' />
-      <script type='text/javascript' src='{{ asset('js/jquery.min.js?ver=5.7.2') }}' id='halim-jquery-js'></script>
-      {{-- <style type="text/css" id="wp-custom-css">
+      <link rel='stylesheet' id='bootstrap-css' href='{{ asset('css/bootstrap.min.css') }}' media='all' />
+      <link rel='stylesheet' id='style-css' href='{{ asset('css/style.css') }}' media='all' />
+      <link rel='stylesheet' id='wp-block-library-css' href='{{ asset('css/style.min.css') }}' media='all' />
+      <script type='text/javascript' src='{{ asset('js/jquery.min.js') }}' id='halim-jquery-js'></script>
+      <style type="text/css" id="wp-custom-css">
          .textwidget p a img {
          width: 100%;
          }
-      </style> --}}
+      </style>
 
       <style>#header .site-title {background: url(https://yt3.googleusercontent.com/ytc/AOPolaR9FfDMRdM8TlwyHP2HWyslCa2UN4V4KjGH938A=s900-c-k-c0x00ffffff-no-rj) no-repeat top left;background-size: contain;text-indent: -9999px;}</style>
    </head>
@@ -66,7 +67,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 hidden-xs">
-                    <div id="get-bookmark" class="box-shadow"><i class="hl-bookmark"></i><span> Bookmarks</span><span class="count">0</span></div>
+                    <div id="get-bookmark" class="box-shadow"><span> Bookmarks</span><span class="count">0</span></div>
                     <div id="bookmark-list" class="hidden bookmark-list-on-pc">
                         <ul style="margin: 0;"></ul>
                     </div>
@@ -166,10 +167,10 @@
       </footer>
       <div id='easy-top'></div>
 
-      <script type='text/javascript' src='{{ asset('js/bootstrap.min.js?ver=5.7.2') }}' id='bootstrap-js'></script>
-      <script type='text/javascript' src='{{ asset('js/owl.carousel.min.js?ver=5.7.2') }}' id='carousel-js'></script>
+      <script type='text/javascript' src='{{ asset('js/bootstrap.min.js') }}' id='bootstrap-js'></script>
+      <script type='text/javascript' src='{{ asset('js/owl.carousel.min.js') }}' id='carousel-js'></script>
 
-      <script type='text/javascript' src='{{ asset('js/halimtheme-core.min.js?ver=1626273138') }}' id='halim-init-js'></script>
+      <script type='text/javascript' src='{{ asset('js/halimtheme-core.min.js') }}' id='halim-init-js'></script>
 
 
 

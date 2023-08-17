@@ -136,6 +136,23 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Top view :</label>
+                        <select class="form-select {{$errors->has('topview')?'is-invalid':''}}" name="topview" aria-label="Default select example">
+                            <option value="0" selected>--chọn---</option>
+                            <option value="1" {{old('topview')==1 ? 'selected':false}}>Ngày</option>
+                            <option value="2" {{old('topview')==2 ? 'selected':false}}>Tuần</option>
+                            <option value="3" {{old('topview')==3 ? 'selected':false}}>Tháng</option>
+                        </select>
+
+                        @error('topview')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Hot :</label>
                         <select class="form-select {{$errors->has('hot')?'is-invalid':''}}" name="hot" aria-label="Default select example">
                             <option value="0" selected>--chọn---</option>

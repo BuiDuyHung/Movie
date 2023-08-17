@@ -36,6 +36,7 @@
                     <th>Phụ đề</th>
                     <th>Định dạng</th>
                     <th>Trạng thái</th>
+                    <th>Top view</th>
                     <th>Năm sản xuất</th>
                     <th>Ngày tạo</th>
                     <th>Ngày cập nhật</th>
@@ -91,6 +92,17 @@
                                 <span class="text text-success">Hiển thị</span>
                             @else
                                 <span class="text text-danger">Không hiển thị</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($item->topview == 1)
+                                <span class="text text-success">Ngày</span>
+                            @elseif ($item->topview == 2)
+                                <span class="text text-success">Tuần</span>
+                            @elseif ($item->topview == 3)
+                                <span class="text text-success">Tháng</span>
+                            @else
+                                <span class="text text-success">Null</span>
                             @endif
                         </td>
                         <td>

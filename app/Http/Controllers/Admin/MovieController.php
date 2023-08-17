@@ -57,6 +57,7 @@ class MovieController extends Controller
             'year' => $request->year,
             'time' => $request->time,
             'tag' => $request->tag,
+            'topview' => $request->topview,
         ]);
 
         return redirect()->route('admin.movie.index')->with('msg', 'Thêm phim thành công !');
@@ -105,6 +106,7 @@ class MovieController extends Controller
         $movie->year = $request->year;
         $movie->time = $request->time;
         $movie->tag = $request->tag;
+        $movie->topview = $request->topview;
         $movie->save();
 
         return redirect()->route('admin.movie.index')->with('msg', 'Cập nhật phim thành công !');
