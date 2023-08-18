@@ -10,6 +10,7 @@ use App\Models\Movie;
 use App\Models\Country;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class MovieController extends Controller
 {
@@ -19,6 +20,13 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
+
+        $path = public_path().'/json/';
+        if(!is_dir($path)){
+            mkdir($path, 0777, true);
+        }
+        File::put($path.'movies.json', json_encode($movies));
+
 
         return view('admincp.movies.index', compact('movies'));
     }
@@ -40,27 +48,35 @@ class MovieController extends Controller
      */
     public function store(MovieRequest $request)
     {
+        dd($request);
 
-        Movie::create([
-            'title' => $request->title,
-            'title_english' => $request->title_english,
-            'slug' => $request->slug,
-            'description' => $request->description,
-            'status' => $request->status,
-            'genre_id' => $request->genre_id,
-            'category_id' => $request->category_id,
-            'country_id' => $request->country_id,
-            'hot' => $request->hot,
-            'sub' => $request->sub,
-            'resolution' => $request->resolution,
-            'image' => $request->image,
-            'year' => $request->year,
-            'time' => $request->time,
-            'tag' => $request->tag,
-            'topview' => $request->topview,
-        ]);
+        // $movie = new Movie();
 
-        return redirect()->route('admin.movie.index')->with('msg', 'Thêm phim thành công !');
+        // $movie->title = $request->title;
+        // $movie->title_english = $request->title_english;
+        // $movie->slug = $request->slug;
+        // $movie->description = $request->description;
+        // $movie->status = $request->status;
+        // $movie->category_id = $request->category_id;
+        // $movie->country_id = $request->country_id;
+        // $movie->hot = $request->hot;
+        // $movie->resolution = $request->resolution;
+        // $movie->sub = $request->sub;
+        // $movie->image = $request->image;
+        // $movie->year = $request->year;
+        // $movie->time = $request->time;
+        // $movie->tag = $request->tag;
+        // $movie->topview = $request->topview;
+        // $movie->trailer = $request->trailer;
+        // foreach($request->genre_id as $genreId){
+        //     $movie->genres()->attach($genreId);
+        // }
+
+        // $movie->save();
+
+
+
+        // return redirect()->route('admin.movie.index')->with('msg', 'Thêm phim thành công !');
     }
 
     /**
@@ -107,6 +123,7 @@ class MovieController extends Controller
         $movie->time = $request->time;
         $movie->tag = $request->tag;
         $movie->topview = $request->topview;
+        $movie->trailer = $request->trailer;
         $movie->save();
 
         return redirect()->route('admin.movie.index')->with('msg', 'Cập nhật phim thành công !');
@@ -161,6 +178,8 @@ class MovieController extends Controller
                 $text = 'HDCam';
             }elseif($item->resolution == 4){
                 $text = 'Cam';
+            }elseif($item->resolution == 5){
+                $text = 'Trailer';
             }else{
                 $text = 'FullHD';
             }

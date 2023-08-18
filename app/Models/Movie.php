@@ -28,17 +28,20 @@ class Movie extends Model
         'year',
         'time',
         'tag',
+        'trailer'
     ];
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function genre(){
-        return $this->belongsTo(Genre::class, 'genre_id', 'id');
-    }
 
     public function country(){
         return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'genre_movie');
     }
 }

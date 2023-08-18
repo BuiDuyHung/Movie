@@ -30,12 +30,15 @@
                     <div class="movie_info col-xs-12">
                     <div class="movie-poster col-md-3">
                         <img class="movie-thumb" src="{{ $movie->image }}" alt="{{ $movie->slug }}">
-                        <div class="bwa-content">
-                            <div class="loader"></div>
-                            <a href="{{ route('home.watch') }}" class="bwac-btn">
-                            <i class="fa fa-play"></i>
-                            </a>
-                        </div>
+                        @if ($movie->resolution!=5)
+                            <div class="bwa-content">
+                                <div class="loader"></div>
+                                <a href="{{ route('home.watch') }}" class="bwac-btn">
+                                <i class="fa fa-play"></i>
+                                </a>
+                            </div>
+                        @endif
+
                     </div>
                     <div class="film-poster col-md-9">
                             <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;"> {{ $movie->title }} </h1>
@@ -51,17 +54,21 @@
                                                 HDCam
                                             @elseif ($movie->resolution == 4)
                                                 Cam
+                                            @elseif ($movie->resolution == 5)
+                                                Trailer
                                             @else
                                                 FullHD
                                             @endif
                                         </span>
-                                        <span class="episode">
-                                            @if ($movie->sub == 1)
-                                                Việt sub
-                                            @else
-                                                Thuyết minh
-                                            @endif
-                                        </span>
+                                        @if ($movie->resolution!=5)
+                                            <span class="episode">
+                                                @if ($movie->sub == 1)
+                                                    Việt sub
+                                                @else
+                                                    Thuyết minh
+                                                @endif
+                                            </span>
+                                        @endif
                                     </li>
                                     <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}} </li>
                                     @if ($movie->season!=0)
@@ -90,10 +97,15 @@
                     <div class="video-item halim-entry-box">
                         <article id="post-38424" class="item-content">
                             <p> {!! $movie->description !!} </p>
+
+                            @if ($movie->trailer)
+                                <div class="fb-comments" data-href="http://127.0.0.1:8000/phim/ca-map-sieu-bao-chua-2%20-vuc-sau" data-width="100%" data-numposts="5"></div>
+                            @endif
                         </article>
                     </div>
                 </div>
 
+                <div class="clearfix"></div>
                 <div class="section-bar clearfix">
                     <h2 class="section-title"><span style="color:#ffed4d">Tags</span></h2>
                 </div>
@@ -111,6 +123,18 @@
                             @else
                                 {{$movie->title}}
                             @endif
+                        </article>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="section-bar clearfix">
+                    <h2 class="section-title"><span style="color:#ffed4d">Bình luận</span></h2>
+                </div>
+                <div class="entry-content htmlwrap clearfix">
+                    <div class="video-item halim-entry-box">
+                        <article id="post-38424" class="item-content">
+                            <div class="fb-comments" data-href="http://127.0.0.1:8000/phim/ca-map-sieu-bao-chua-2%20-vuc-sau" data-width="" data-numposts="5"></div>
                         </article>
                     </div>
                 </div>

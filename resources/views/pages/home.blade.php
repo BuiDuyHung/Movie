@@ -26,6 +26,8 @@
                                     HDCam
                                 @elseif ($item->resolution == 4)
                                     Cam
+                                @elseif ($item->resolution == 5)
+                                    Trailer
                                 @else
                                     FullHD
                                 @endif
@@ -109,10 +111,13 @@
                                             HDCam
                                         @elseif ($item->resolution == 4)
                                             Cam
+                                        @elseif ($item->resolution == 5)
+                                            Trailer
                                         @else
                                             FullHD
                                         @endif
                                     </span>
+
                                     <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                                         @if ($item->sub == 1)
                                             Việt sub

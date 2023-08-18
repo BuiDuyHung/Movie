@@ -32,6 +32,17 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Slug :</label>
+                        <input type="text" name="slug" class="form-control slug {{$errors->has('slug')?'is-invalid':''}}" value="{{old('slug') ?? $movie->slug}}">
+                        @error('slug')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Tên tiếng anh :</label>
                         <input type="text" name="title_english" class="form-control title_english {{$errors->has('title_english')?'is-invalid':''}}" value="{{old('title_english') ?? $movie->title_english}}">
                         @error('title_english')
@@ -54,9 +65,9 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="">Slug :</label>
-                        <input type="text" name="slug" class="form-control slug {{$errors->has('slug')?'is-invalid':''}}" value="{{old('slug') ?? $movie->slug}}">
-                        @error('slug')
+                        <label for="">Trailer :</label>
+                        <input type="text" name="trailer" class="form-control trailer {{$errors->has('trailer')?'is-invalid':''}}" value="{{old('trailer') ?? $movie->trailer}}">
+                        @error('trailer')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
@@ -197,9 +208,10 @@
                             <option value="0" selected>--chọn định dạng---</option>
                             <option value="1" {{old('resolution')==1 || $movie->resolution==1 ? 'selected':false}}>HD</option>
                             <option value="2" {{old('resolution')==2 || $movie->resolution==2 ? 'selected':false}}>SD</option>
-                            <option value="3" {{old('resolution')==3 || $movie->resolution==2 ? 'selected':false}}>HDCam</option>
-                            <option value="4" {{old('resolution')==4 || $movie->resolution==2 ? 'selected':false}}>Cam</option>
-                            <option value="5" {{old('resolution')==5 || $movie->resolution==2 ? 'selected':false}}>FullHD</option>
+                            <option value="3" {{old('resolution')==3 || $movie->resolution==3 ? 'selected':false}}>HDCam</option>
+                            <option value="4" {{old('resolution')==4 || $movie->resolution==4 ? 'selected':false}}>Cam</option>
+                            <option value="5" {{old('resolution')==5 || $movie->resolution==5 ? 'selected':false}}>Trailer</option>
+                            <option value="6" {{old('resolution')==6 || $movie->resolution==6 ? 'selected':false}}>FullHD</option>
                         </select>
 
                         @error('resolution')

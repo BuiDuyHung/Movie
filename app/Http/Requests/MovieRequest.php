@@ -100,6 +100,7 @@ class MovieRequest extends FormRequest
             'time' => 'Thời lượng phim',
             'tag' => 'Tag',
             'topview' => 'Top view',
+            'trailer' => 'Trailer',
         ];
     }
 }

@@ -57,7 +57,7 @@
                         <td> {{ $item->time }} </td>
                         <td> {{ $item->slug }} </td>
                         {{-- <td> {!! $item->description !!} </td> --}}
-                        <td> {{ $item->genre->title }} </td>
+                        {{-- <td> {{ $item->genre->title }} </td> --}}
                         <td> {{ $item->category->title }} </td>
                         <td> {{ $item->country->title }} </td>
                         <td> {{ $item->tag }} </td>
@@ -84,8 +84,10 @@
                                 <span class="text text-success">HDCam</span>
                             @elseif ($item->resolution == 4)
                                 <span class="text text-success">Cam</span>
-                            @else
+                            @elseif ($item->resolution == 5)
                                 <span class="text text-success">FullHD</span>
+                            @else
+                                <span class="text text-success">Trailer</span>
                             @endif
                         </td>
                         <td>

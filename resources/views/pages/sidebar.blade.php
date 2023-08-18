@@ -17,16 +17,67 @@
                                 <img src="{{ $item->image }}" class="lazy post-thumb" alt=" {{$item->slug}} " title=" {{$item->title}} " />
                                 <span class="is_trailer">
                                     @if ($item->resolution == 1)
-                                            HD
-                                        @elseif ($item->resolution == 2)
-                                            SD
-                                        @elseif ($item->resolution == 3)
-                                            HDCam
-                                        @elseif ($item->resolution == 4)
-                                            Cam
-                                        @else
-                                            FullHD
-                                        @endif
+                                        HD
+                                    @elseif ($item->resolution == 2)
+                                        SD
+                                    @elseif ($item->resolution == 3)
+                                        HDCam
+                                    @elseif ($item->resolution == 4)
+                                        Cam
+                                    @elseif ($item->resolution == 5)
+                                        Trailer
+                                    @else
+                                        FullHD
+                                    @endif
+                                </span>
+                            </div>
+                            <p class="title"> {{$item->title}} </p>
+                            </a>
+                            <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
+                            <div style="float: left;">
+                            <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
+                            <span style="width: 0%"></span>
+                            </span>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+    </div>
+
+    {{-- Phim sắp chiếu --}}
+    <div id="halim_tab_popular_videos-widget-7" class="widget halim_tab_popular_videos-widget">
+        <div class="section-bar clearfix">
+            <div class="section-title">
+                <span>Phim sắp chiếu</span>
+
+            </div>
+        </div>
+        <section class="tab-content">
+            <div role="tabpanel" class="tab-pane active halim-ajax-popular-post">
+                <div class="halim-ajax-popular-post-loading hidden"></div>
+                <div id="halim-ajax-popular-post" class="popular-post">
+                    @foreach ($movie_trailer as $item)
+                        <div class="item post-37176">
+                            <a href="{{ route('home.movie', $item->slug) }}" title=" {{$item->title}} ">
+                            <div class="item-link">
+                                <img src="{{ $item->image }}" class="lazy post-thumb" alt=" {{$item->slug}} " title=" {{$item->title}} " />
+                                <span class="is_trailer">
+                                    @if ($item->resolution == 1)
+                                        HD
+                                    @elseif ($item->resolution == 2)
+                                        SD
+                                    @elseif ($item->resolution == 3)
+                                        HDCam
+                                    @elseif ($item->resolution == 4)
+                                        Cam
+                                    @elseif ($item->resolution == 5)
+                                        Trailer
+                                    @else
+                                        FullHD
+                                    @endif
                                 </span>
                             </div>
                             <p class="title"> {{$item->title}} </p>

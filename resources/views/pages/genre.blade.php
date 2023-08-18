@@ -34,6 +34,8 @@
                                 HDCam
                             @elseif ($item->resolution == 4)
                                 Cam
+                            @elseif ($item->resolution == 5)
+                                Trailer
                             @else
                                 FullHD
                             @endif

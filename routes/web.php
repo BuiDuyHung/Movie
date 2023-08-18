@@ -34,6 +34,7 @@ Route::get('/xem-phim', [IndexController::class, 'watch'])->name('home.watch');
 Route::get('/tap-phim', [IndexController::class, 'episode'])->name('home.episode');
 Route::get('/nam/{year}', [IndexController::class, 'year'])->name('home.year');
 Route::get('/tag/{tag}', [IndexController::class, 'tag'])->name('home.tag');
+Route::get('/tim-kiem', [IndexController::class, 'search'])->name('home.search');
 
 
 Route::prefix('admin')->name('admin.')->group(function (){

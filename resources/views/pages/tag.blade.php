@@ -34,8 +34,10 @@
                                     HDCam
                                 @elseif ($item->resolution == 4)
                                     Cam
-                                @else
+                                @elseif ($item->resolution == 5)
                                     FullHD
+                                @else
+                                    Trailer
                                 @endif
                             </span>
                             <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
