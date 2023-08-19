@@ -87,13 +87,10 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="">Thể loại :</label>
-                        <select class="form-select {{$errors->has('genre_id')?'is-invalid':''}}" name="genre_id" aria-label="Default select example">
-                            <option value="0" selected>--chọn thể loại---</option>
-                            @foreach ($genres as $item)
-                                <option value=" {{ $item->id }} " {{$movie->genre_id==$item->id ? 'selected':false}}> {{ $item->title }} </option>
-                            @endforeach
-                        </select>
+                        <label for="">Thể loại :</label><br>
+                        @foreach ($genres as $item)
+                            <input class="form-check-input" type="checkbox" name="genre_id[]" value="{{ $item->id }}" {{ in_array($item->id, $movie_genre->pluck('id')->toArray()) ? 'checked' : '' }}> {{ $item->title }} <br>
+                        @endforeach
 
                         @error('genre_id')
                             <div class="invalid-feedback">

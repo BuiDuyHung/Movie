@@ -75,7 +75,9 @@
                                         <li class="list-info-group-item"><span>Season</span> : {{$movie->season}} </li>
                                     @endif
                                     <li class="list-info-group-item"><span>Thể loại</span> :
-                                        <a href="{{ route('home.genre', $movie->genre->slug) }}" rel="category tag">{{ $movie->genre->title }}</a>
+                                        @foreach ($movie->movie_genre as $item)
+                                            <a href="{{ route('home.genre', $item->slug) }}" rel="category tag">{{$item->title}}</a>,
+                                        @endforeach
                                     </li>
                                     <li class="list-info-group-item"><span>Danh mục</span> :
                                         <a href="{{ route('home.category', $movie->category->slug) }}" rel="category tag">{{ $movie->category->title }}</a>

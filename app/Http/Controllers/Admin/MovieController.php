@@ -19,7 +19,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
+        $movies = Movie::with('category', 'country', 'movie_genre')->orderBy('updated_at', 'DESC')->get();
+        // return response()->json($movies);
 
         $path = public_path().'/json/';
         if(!is_dir($path)){
@@ -48,35 +49,31 @@ class MovieController extends Controller
      */
     public function store(MovieRequest $request)
     {
-        dd($request);
+        $movie = new Movie();
+        $movie->title = $request->title;
+        $movie->title_english = $request->title_english;
+        $movie->slug = $request->slug;
+        $movie->description = $request->description;
+        $movie->status = $request->status;
+        $movie->category_id = $request->category_id;
+        $movie->country_id = $request->country_id;
+        $movie->hot = $request->hot;
+        $movie->resolution = $request->resolution;
+        $movie->sub = $request->sub;
+        $movie->image = $request->image;
+        $movie->year = $request->year;
+        $movie->time = $request->time;
+        $movie->tag = $request->tag;
+        $movie->topview = $request->topview;
+        $movie->trailer = $request->trailer;
+        foreach($request->genre_id as $genre){
+            $movie->genre_id = $genre[0];
+        }
+        $movie->save();
 
-        // $movie = new Movie();
+        $movie->movie_genre()->attach($request->genre_id);
 
-        // $movie->title = $request->title;
-        // $movie->title_english = $request->title_english;
-        // $movie->slug = $request->slug;
-        // $movie->description = $request->description;
-        // $movie->status = $request->status;
-        // $movie->category_id = $request->category_id;
-        // $movie->country_id = $request->country_id;
-        // $movie->hot = $request->hot;
-        // $movie->resolution = $request->resolution;
-        // $movie->sub = $request->sub;
-        // $movie->image = $request->image;
-        // $movie->year = $request->year;
-        // $movie->time = $request->time;
-        // $movie->tag = $request->tag;
-        // $movie->topview = $request->topview;
-        // $movie->trailer = $request->trailer;
-        // foreach($request->genre_id as $genreId){
-        //     $movie->genres()->attach($genreId);
-        // }
-
-        // $movie->save();
-
-
-
-        // return redirect()->route('admin.movie.index')->with('msg', 'Thêm phim thành công !');
+        return redirect()->route('admin.movie.index')->with('msg', 'Thêm phim thành công !');
     }
 
     /**
@@ -97,7 +94,9 @@ class MovieController extends Controller
         $countries = Country::all();
         $movie = Movie::find($id);
 
-        return view('admincp.movies.edit', compact('movie', 'categories', 'genres', 'countries'));
+        $movie_genre = $movie->movie_genre;
+
+        return view('admincp.movies.edit', compact('movie', 'categories', 'genres', 'countries', 'movie_genre'));
     }
 
     /**
@@ -113,7 +112,6 @@ class MovieController extends Controller
         $movie->description = $request->description;
         $movie->status = $request->status;
         $movie->category_id = $request->category_id;
-        $movie->genre_id = $request->genre_id;
         $movie->country_id = $request->country_id;
         $movie->hot = $request->hot;
         $movie->resolution = $request->resolution;
@@ -124,7 +122,12 @@ class MovieController extends Controller
         $movie->tag = $request->tag;
         $movie->topview = $request->topview;
         $movie->trailer = $request->trailer;
+        foreach($request->genre_id as $genre){
+            $movie->genre_id = $genre[0];
+        }
         $movie->save();
+
+        $movie->movie_genre()->sync($request->genre_id);
 
         return redirect()->route('admin.movie.index')->with('msg', 'Cập nhật phim thành công !');
     }

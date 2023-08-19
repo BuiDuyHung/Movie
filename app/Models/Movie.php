@@ -35,13 +35,16 @@ class Movie extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function genre(){
+        return $this->belongsTo(Genre::class, 'genre_id', 'id');
+    }
 
     public function country(){
         return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 
-    public function genres()
+    public function movie_genre()
     {
-        return $this->belongsToMany(Genre::class, 'genre_movie');
+        return $this->belongsToMany(Genre::class, 'movie_genre', 'movie_id', 'genre_id');
     }
 }

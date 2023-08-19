@@ -82,12 +82,10 @@
                     <div class="mb-3">
                         <label for="">Thể loại :</label><br>
                         @foreach ($genres as $item)
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="genre_id[]" value="{{ $item->id }}"> {{ $item->title }}
-                            </label><br>
+                            <input class="form-check-input {{$errors->has('genre_id[]')?'is-invalid':''}}" type="checkbox" name="genre_id[]" value="{{ $item->id }}"> {{ $item->title }} <br>
                         @endforeach
 
-                        @error('genre_id')
+                        @error('genre_id[]')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>

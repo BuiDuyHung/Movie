@@ -21,7 +21,7 @@
         <table id="dataTable" class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Mã phim</th>
                     <th>Hình ảnh</th>
                     <th>Tên</th>
                     <th>Tên tiếng anh</th>
@@ -57,7 +57,11 @@
                         <td> {{ $item->time }} </td>
                         <td> {{ $item->slug }} </td>
                         {{-- <td> {!! $item->description !!} </td> --}}
-                        {{-- <td> {{ $item->genre->title }} </td> --}}
+                        <td>
+                            @foreach ($item->movie_genre as $genre)
+                                <span class="badge bg-info text-dark">{{ $genre->title }}</span>
+                            @endforeach
+                        </td>
                         <td> {{ $item->category->title }} </td>
                         <td> {{ $item->country->title }} </td>
                         <td> {{ $item->tag }} </td>

@@ -37,11 +37,7 @@ class MovieRequest extends FormRequest
                     $fail('Vui lòng chọn trạng thái');
                 }
             }],
-            'hot' => ['required', 'integer', function($attribute, $value, $fail) {
-                if($value == '0'){
-                    $fail('Vui lòng chọn hot');
-                }
-            }],
+
             'sub' => ['required', 'integer', function($attribute, $value, $fail) {
                 if($value == '0'){
                     $fail('Vui lòng chọn phụ đề');
@@ -50,11 +46,6 @@ class MovieRequest extends FormRequest
             'resolution' => ['required', 'integer', function($attribute, $value, $fail) {
                 if($value == '0'){
                     $fail('Vui lòng chọn định dạng');
-                }
-            }],
-            'genre_id' => ['required', 'integer', function($attribute, $value, $fail) {
-                if($value == '0'){
-                    $fail('Vui lòng chọn thể loại');
                 }
             }],
             'category_id' => ['required', 'integer', function($attribute, $value, $fail) {
@@ -90,10 +81,8 @@ class MovieRequest extends FormRequest
             'description' => 'Mô tả',
             'status' => 'Trạng thái',
             'image' => 'Hình ảnh',
-            'Hot' => 'Hot',
             'sub' => 'Phụ đề',
             'resolution' => 'Định dạng',
-            'genre_id' => 'Thể loại',
             'category_id' => 'Danh mục',
             'country_id' => 'Quốc gia',
             'year' => 'Năm sản xuất',

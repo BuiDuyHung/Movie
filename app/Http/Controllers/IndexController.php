@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\Episode;
 use App\Models\Genre;
 use App\Models\Movie;
+use App\Models\Movie_Genre;
 use App\Models\Watch;
 
 class IndexController extends Controller
@@ -92,7 +93,14 @@ class IndexController extends Controller
         $movie_trailer = Movie::where('hot', 1)->where('status', 1)->where('resolution', 5)->orderBy('updated_at', 'DESC')->take(8)->get();
 
         $genre_slug = Genre::where('slug', $slug)->first();
-        $movie = Movie::where('genre_id', $genre_slug->id)->orderBy('updated_at', 'DESC')->paginate(20);
+
+        // Nhiều thể loại
+        $movie_genre = Movie_Genre::where('genre_id', $genre_slug->id)->get();
+        $many_genre = [];
+        foreach($movie_genre as $item){
+            $many_genre[] = $item->movie_id;
+        }
+        $movie = Movie::whereIn('id', $many_genre)->orderBy('updated_at', 'DESC')->paginate(20);
 
         return view('pages.genre', compact('categories', 'genres', 'countries', 'genre_slug', 'movie', 'moviehot_sidebar', 'movie_trailer'));
     }
