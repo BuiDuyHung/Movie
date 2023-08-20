@@ -26,6 +26,7 @@
                     <th>Tên</th>
                     <th>Tên tiếng anh</th>
                     <th>Thời lượng phim</th>
+                    <th>Số tập</th>
                     <th>Slug</th>
                     {{-- <th>Mô tả</th> --}}
                     <th>Thể loại</th>
@@ -55,6 +56,7 @@
                         <td> {{ $item->title }} </td>
                         <td> {{ $item->title_english }} </td>
                         <td> {{ $item->time }} </td>
+                        <td> {{ $item->episode }} </td>
                         <td> {{ $item->slug }} </td>
                         {{-- <td> {!! $item->description !!} </td> --}}
                         <td>

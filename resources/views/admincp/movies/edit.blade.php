@@ -65,6 +65,17 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Số tập phim :</label>
+                        <input type="text" name="episode" class="form-control episode {{$errors->has('episode')?'is-invalid':''}}" value="{{old('episode') ?? $movie->episode}}">
+                        @error('episode')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Trailer :</label>
                         <input type="text" name="trailer" class="form-control trailer {{$errors->has('trailer')?'is-invalid':''}}" value="{{old('trailer') ?? $movie->trailer}}">
                         @error('trailer')

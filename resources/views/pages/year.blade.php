@@ -51,6 +51,9 @@
                             <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                                 @if ($item->sub == 1)
                                     Việt sub
+                                    @if ($item->episode!=0)
+                                    - {{$item->episode}}/{{$item->episode}} Tập
+                                    @endif
                                 @else
                                     Thuyết minh
                                 @endif

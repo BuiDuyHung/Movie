@@ -42,10 +42,13 @@ Route::prefix('admin')->name('admin.')->group(function (){
     Route::resource('category', CategoryController::class);
     Route::post('category/resorting', [CategoryController::class, 'resorting'])->name('resorting');
     Route::resource('country', CountryController::class);
-    Route::resource('episode', EpisodeController::class);
-    Route::resource('genre', GenreController::class);
-    Route::resource('movie', MovieController::class);
 
+    Route::resource('episode', EpisodeController::class);
+    Route::get('/select-movie', [EpisodeController::class, 'select_movie'])->name('select_movie');
+
+    Route::resource('genre', GenreController::class);
+
+    Route::resource('movie', MovieController::class);
     Route::post('/update-year-movie', [MovieController::class, 'update_year'])->name('update_year');
     Route::get('/update-topview-movie', [MovieController::class, 'update_topview'])->name('update_topview');
     Route::post('/update-season-movie', [MovieController::class, 'update_season'])->name('update_season');

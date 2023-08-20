@@ -43,8 +43,8 @@
                             <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                                 @if ($item->sub == 1)
                                     Việt sub
-                                    @if ($item->season!=0)
-                                        - Season {{$item->season}}
+                                    @if ($item->episode!=0)
+                                    - {{$item->episode}}/{{$item->episode}} Tập
                                     @endif
                                 @else
                                     Thuyết minh

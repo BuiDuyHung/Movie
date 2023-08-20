@@ -55,6 +55,20 @@
         <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
         <script>
+            $('.select-movie').change(function(){
+                var id = $(this).find(':selected').val();
+                $.ajax({
+                    url: "{{ route('admin.select_movie') }}",
+                    method: 'GET',
+                    data: {id: id},
+                    success: function(data){
+                        $('#show_movie').html(data);
+                    },
+                });
+            })
+        </script>
+
+        <script>
             $('.select-season').change(function(){
                 var season = $(this).find(':selected').val()
                 var id_movie = $(this).attr('id')

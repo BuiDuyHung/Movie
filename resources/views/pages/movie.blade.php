@@ -70,6 +70,9 @@
                                             </span>
                                         @endif
                                     </li>
+                                    @if ($movie->episode!=0)
+                                        <li class="list-info-group-item"><span>Tập phim</span> : {{$movie->episode}}/{{$movie->episode}} - Hoàn thành </li>
+                                    @endif
                                     <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}} </li>
                                     @if ($movie->season!=0)
                                         <li class="list-info-group-item"><span>Season</span> : {{$movie->season}} </li>

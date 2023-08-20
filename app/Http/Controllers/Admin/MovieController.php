@@ -63,6 +63,7 @@ class MovieController extends Controller
         $movie->image = $request->image;
         $movie->year = $request->year;
         $movie->time = $request->time;
+        $movie->episode = $request->episode;
         $movie->tag = $request->tag;
         $movie->topview = $request->topview;
         $movie->trailer = $request->trailer;
@@ -119,6 +120,7 @@ class MovieController extends Controller
         $movie->image = $request->image;
         $movie->year = $request->year;
         $movie->time = $request->time;
+        $movie->episode = $request->episode;
         $movie->tag = $request->tag;
         $movie->topview = $request->topview;
         $movie->trailer = $request->trailer;
