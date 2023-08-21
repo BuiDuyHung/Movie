@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Tập phim</h1>
+    <h1 class="mt-4">Tập Phim</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Tổng quan</a></li>
         <li class="breadcrumb-item active">Danh sách tập phim</li>
@@ -22,7 +22,8 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Phim</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên phim</th>
                     <th>Tập phim</th>
                     <th>Link</th>
                     <th>Hành động</th>
@@ -33,9 +34,12 @@
                 @foreach ($episodes as $item)
                     <tr>
                         <td> {{ $item->id }} </td>
+                        <td>
+                            <img src="{{$item->movie->image}}" width="100px" alt="{{$item->movie->slug}}">
+                        </td>
                         <td> {{ $item->movie->title }} </td>
                         <td> {{ $item->episode }} </td>
-                        <td> {{ $item->link }} </td>
+                        <td> {!! $item->link !!} </td>
                         <td>
                             <div class="d-flex justify-content-start">
                                 <a href="{{ route('admin.episode.edit', $item->id) }}" class="badge bg-success" ><i class="fa-solid fa-pen-to-square" style="height: 20px" ></i></a>

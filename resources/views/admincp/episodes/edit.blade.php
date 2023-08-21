@@ -10,6 +10,7 @@
     </ol>
 
     <form action="{{ route('admin.episode.update', $episode->id) }}" method="POST">
+        @method('PUT')
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -31,9 +32,9 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="">Tập phim :</label>
-                        <select id="show_movie" class="form-select" name="episode" aria-label="Default select example">
-
+                        <label for="">Tập phim:</label>
+                        <select id="show_movie" class="form-select" name="episode" aria-label="Default select example" readonly>
+                            <option value="{{ $episode->episode }}" selected>{{ $episode->episode }}</option>
                         </select>
                     </div>
                 </div>

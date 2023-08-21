@@ -29,7 +29,8 @@ class Movie extends Model
         'time',
         'tag',
         'trailer',
-        'episode'
+        'episode',
+        'belong_category'
     ];
 
     public function category(){

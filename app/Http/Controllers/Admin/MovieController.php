@@ -67,6 +67,7 @@ class MovieController extends Controller
         $movie->tag = $request->tag;
         $movie->topview = $request->topview;
         $movie->trailer = $request->trailer;
+        $movie->belong_category = $request->belong_category;
         foreach($request->genre_id as $genre){
             $movie->genre_id = $genre[0];
         }
@@ -124,6 +125,7 @@ class MovieController extends Controller
         $movie->tag = $request->tag;
         $movie->topview = $request->topview;
         $movie->trailer = $request->trailer;
+        $movie->belong_category = $request->belong_category;
         foreach($request->genre_id as $genre){
             $movie->genre_id = $genre[0];
         }

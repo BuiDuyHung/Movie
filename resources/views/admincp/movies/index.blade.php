@@ -28,6 +28,7 @@
                     <th>Thời lượng phim</th>
                     <th>Số tập</th>
                     <th>Slug</th>
+                    <th>Thuộc phim</th>
                     {{-- <th>Mô tả</th> --}}
                     <th>Thể loại</th>
                     <th>Danh mục</th>
@@ -58,6 +59,13 @@
                         <td> {{ $item->time }} </td>
                         <td> {{ $item->episode }} </td>
                         <td> {{ $item->slug }} </td>
+                        <td>
+                            @if ($item->belong_category == 'phimbo')
+                                Phim bộ
+                            @elseif ($item->belong_category == 'phimle')
+                                Phim lẻ
+                            @endif
+                        </td>
                         {{-- <td> {!! $item->description !!} </td> --}}
                         <td>
                             @foreach ($item->movie_genre as $genre)

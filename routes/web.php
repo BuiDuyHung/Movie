@@ -30,8 +30,9 @@ Route::get('/danh-muc/{slug}', [IndexController::class, 'category'])->name('home
 Route::get('/the-loai/{slug}', [IndexController::class, 'genre'])->name('home.genre');
 Route::get('/quoc-gia/{slug}', [IndexController::class, 'country'])->name('home.country');
 Route::get('/phim/{slug}', [IndexController::class, 'movie'])->name('home.movie');
-Route::get('/xem-phim', [IndexController::class, 'watch'])->name('home.watch');
+Route::get('/xem-phim/{slug}/{episode}', [IndexController::class, 'watch'])->name('home.watch');
 Route::get('/tap-phim', [IndexController::class, 'episode'])->name('home.episode');
+
 Route::get('/nam/{year}', [IndexController::class, 'year'])->name('home.year');
 Route::get('/tag/{tag}', [IndexController::class, 'tag'])->name('home.tag');
 Route::get('/tim-kiem', [IndexController::class, 'search'])->name('home.search');

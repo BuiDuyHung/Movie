@@ -91,6 +91,21 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Thuộc phim :</label>
+                        <select class="form-select {{$errors->has('category_id')?'is-invalid':''}}" name="category_id" aria-label="Default select example">
+                            <option value="0" selected>--chọn---</option>
+                            <option value="phimle">Phim lẻ</option>
+                            <option value="phimbo">Phim bộ</option>
+                        </select>
+                        @error('belong_category')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Thể loại :</label><br>
                         @foreach ($genres as $item)
                             <input class="form-check-input {{$errors->has('genre_id[]')?'is-invalid':''}}" type="checkbox" name="genre_id[]" value="{{ $item->id }}"> {{ $item->title }} <br>

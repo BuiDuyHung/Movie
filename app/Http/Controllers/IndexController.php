@@ -56,6 +56,7 @@ class IndexController extends Controller
         $category_slug = Category::where('slug', $slug)->first();
         $movie = Movie::where('category_id', $category_slug->id)->orderBy('updated_at', 'DESC')->paginate(20);
 
+
         return view('pages.category', compact('categories', 'genres', 'countries', 'category_slug', 'movie', 'moviehot_sidebar', 'movie_trailer'));
     }
 
@@ -128,15 +129,41 @@ class IndexController extends Controller
         $movie = Movie::where('slug',$slug)->where('status', 1)->first();
         $related = Movie::where('category_id', $movie->category->id)->whereNotIn('slug', [$slug])->inRandomOrder()->get();
 
-        return view('pages.movie', compact('categories', 'genres', 'countries', 'movie', 'related', 'moviehot_sidebar', 'movie_trailer'));
+        //lấy tập phim đầu
+        $episode_first = Episode::where('movie_id', $movie->id)->orderBy('episode', 'ASC')->first();
+
+        //lấy danh sách 3 tập phim mới nhất
+        $episodes = Episode::where('movie_id', $movie->id)->orderBy('episode', 'DESC')->take(3)->get();
+
+        //lấy tổng tập phim đã thêm
+        $episode_list = Episode::where('movie_id', $movie->id)->get();
+        $episode_list_count = $episode_list->count();
+
+
+        return view('pages.movie', compact('categories', 'genres', 'countries', 'movie', 'related', 'moviehot_sidebar', 'movie_trailer', 'episodes', 'episode_first', 'episode_list_count'));
     }
 
-    public function watch(){
+    public function watch($slug, $tap){
+        // Kiểm tra nếu không có giá trị tập phim, mặc định là tập 1
+        $episode = isset($tap) ? substr($tap, 4, 20) : 1;
+
+        // Lấy danh sách thể loại, thể loại phim, quốc gia
         $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
         $genres = Genre::all();
         $countries = Country::all();
 
-        return view('pages.watch', compact('categories', 'genres', 'countries'));
+        // Lấy danh sách phim hot và phim trailer
+        $moviehot_sidebar = Movie::where('hot', 1)->where('status', 1)->whereNotIn('resolution', [5])->orderBy('updated_at', 'DESC')->take(8)->get();
+        $movie_trailer = Movie::where('hot', 1)->where('status', 1)->where('resolution', 5)->orderBy('updated_at', 'DESC')->take(8)->get();
+
+        // Lấy thông tin phim dựa trên slug
+        $movie = Movie::with('episodes')->where('slug', $slug)->where('status', 1)->first();
+        $related = Movie::where('category_id', $movie->category->id)->whereNotIn('slug', [$slug])->inRandomOrder()->get();
+
+        // Lấy tập phim dựa trên episode
+        $episode_movie = Episode::where('movie_id', $movie->id)->where('episode', $episode)->first();
+
+        return view('pages.watch', compact('categories', 'genres', 'countries', 'moviehot_sidebar', 'movie_trailer', 'movie', 'episode_movie', 'episode', 'related'));
     }
 
     public function episode(){

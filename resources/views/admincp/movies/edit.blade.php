@@ -98,6 +98,21 @@
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Thuộc phim :</label>
+                        <select class="form-select {{$errors->has('belong_category')?'is-invalid':''}}" name="belong_category" aria-label="Default select example">
+                            <option value="0" selected>--chọn---</option>
+                            <option value="phimle" {{old('belong_category')=='phimle' || $movie->belong_category=='phimle' ? 'selected':false}}>Phim lẻ</option>
+                            <option value="phimbo" {{old('belong_category')=='phimbo' || $movie->belong_category=='phimbo' ? 'selected':false}}>Phim bộ</option>
+                        </select>
+                        @error('belong_category')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Thể loại :</label><br>
                         @foreach ($genres as $item)
                             <input class="form-check-input" type="checkbox" name="genre_id[]" value="{{ $item->id }}" {{ in_array($item->id, $movie_genre->pluck('id')->toArray()) ? 'checked' : '' }}> {{ $item->title }} <br>

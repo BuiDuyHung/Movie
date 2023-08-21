@@ -33,59 +33,86 @@
                         @if ($movie->resolution!=5)
                             <div class="bwa-content">
                                 <div class="loader"></div>
-                                <a href="{{ route('home.watch') }}" class="bwac-btn">
-                                <i class="fa fa-play"></i>
-                                </a>
+                                @if ($episode_first) <!-- Kiểm tra xem episode_first có tồn tại -->
+                                    <a href="{{ url('xem-phim/'.$movie->slug.'/tap-'.$episode_first->episode) }}" class="bwac-btn">
+                                        <i class="fa fa-play"></i>
+                                    </a>
+                                @endif
                             </div>
                         @endif
 
                     </div>
                     <div class="film-poster col-md-9">
+
                             <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;"> {{ $movie->title }} </h1>
                             <h2 class="movie-title title-2" style="font-size: 12px;"> {{ $movie->title_english }} </h2>
                             <ul class="list-info-group">
-                                    <li class="list-info-group-item"><span>Trạng Thái</span> :
-                                        <span class="quality">
-                                            @if ($movie->resolution == 1)
-                                                HD
-                                            @elseif ($movie->resolution == 2)
-                                                SD
-                                            @elseif ($movie->resolution == 3)
-                                                HDCam
-                                            @elseif ($movie->resolution == 4)
-                                                Cam
-                                            @elseif ($movie->resolution == 5)
-                                                Trailer
+                                <li class="list-info-group-item"><span>Trạng Thái</span> :
+                                    <span class="quality">
+                                        @if ($movie->resolution == 1)
+                                            HD
+                                        @elseif ($movie->resolution == 2)
+                                            SD
+                                        @elseif ($movie->resolution == 3)
+                                            HDCam
+                                        @elseif ($movie->resolution == 4)
+                                            Cam
+                                        @elseif ($movie->resolution == 5)
+                                            Trailer
+                                        @else
+                                            FullHD
+                                        @endif
+                                    </span>
+                                    @if ($movie->resolution!=5)
+                                        <span class="episode">
+                                            @if ($movie->sub == 1)
+                                                Việt sub
                                             @else
-                                                FullHD
+                                                Thuyết minh
                                             @endif
                                         </span>
-                                        @if ($movie->resolution!=5)
-                                            <span class="episode">
-                                                @if ($movie->sub == 1)
-                                                    Việt sub
-                                                @else
-                                                    Thuyết minh
-                                                @endif
-                                            </span>
+                                    @endif
+                                </li>
+                                @if ($movie->episode!=0)
+                                    <li class="list-info-group-item"><span>Tập phim</span> : {{$episode_list_count}}/{{$movie->episode}} -
+                                        @if ($episode_list_count == $movie->episode)
+                                            Hoàn thành
+                                        @else
+                                            Đang cập nhật
                                         @endif
                                     </li>
-                                    @if ($movie->episode!=0)
-                                        <li class="list-info-group-item"><span>Tập phim</span> : {{$movie->episode}}/{{$movie->episode}} - Hoàn thành </li>
+                                @endif
+                                <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}} </li>
+                                @if ($movie->season!=0)
+                                    <li class="list-info-group-item"><span>Season</span> : {{$movie->season}} </li>
+                                @endif
+                                <li class="list-info-group-item"><span>Thể loại</span> :
+                                    @foreach ($movie->movie_genre as $item)
+                                        <a href="{{ route('home.genre', $item->slug) }}" rel="category tag">{{$item->title}} |</a>
+                                    @endforeach
+                                </li>
+                                <li class="list-info-group-item"><span>Danh mục</span> :
+                                    <a href="{{ route('home.category', $movie->category->slug) }}" rel="category tag">{{ $movie->category->title }}</a>
+                                </li>
+                                <li class="list-info-group-item"><span>Quốc gia</span> :
+                                    <a href="{{ route('home.country', $movie->country->slug) }}" rel="tag"> {{ $movie->country->title }} </a>
+                                </li>
+
+                                <li class="list-info-group-item"><span>Tập phim mới nhất</span> :
+                                    @if ($episode_list_count > 0)
+                                        @if ($movie->belong_category == 'phimbo')
+                                            @foreach ($episodes as $item)
+                                                <a href="{{ url('xem-phim/'.$item->movie->slug.'/tap-'.$item->episode) }}" rel="tag">Tập {{ $item->episode }} |</a>
+                                            @endforeach
+                                        @elseif($movie->belong_category == 'phimle')
+                                            @foreach ($episodes as $item)
+                                                <a href="{{ url('xem-phim/'.$item->movie->slug.'/tap-'.$item->episode) }}" rel="tag">{{ $item->episode }}</a>
+                                            @endforeach
+                                        @endif
+                                    @else
+                                        Đang cập nhật
                                     @endif
-                                    <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}} </li>
-                                    @if ($movie->season!=0)
-                                        <li class="list-info-group-item"><span>Season</span> : {{$movie->season}} </li>
-                                    @endif
-                                    <li class="list-info-group-item"><span>Thể loại</span> :
-                                        @foreach ($movie->movie_genre as $item)
-                                            <a href="{{ route('home.genre', $item->slug) }}" rel="category tag">{{$item->title}}</a>,
-                                        @endforeach
-                                    </li>
-                                    <li class="list-info-group-item"><span>Danh mục</span> :
-                                        <a href="{{ route('home.category', $movie->category->slug) }}" rel="category tag">{{ $movie->category->title }}</a>
-                                    </li>
-                                    <li class="list-info-group-item"><span>Quốc gia</span> : <a href="{{ route('home.country', $movie->country->slug) }}" rel="tag"> {{ $movie->country->title }} </a></li>
+                                </li>
 
                             </ul>
                         <div class="movie-trailer hidden"></div>
@@ -104,7 +131,7 @@
                             <p> {!! $movie->description !!} </p>
 
                             @if ($movie->trailer)
-                                <div class="fb-comments" data-href="http://127.0.0.1:8000/phim/ca-map-sieu-bao-chua-2%20-vuc-sau" data-width="100%" data-numposts="5"></div>
+                                <iframe width="100%" height="500px" src="https://www.youtube.com/embed/{{$movie->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             @endif
                         </article>
                     </div>
