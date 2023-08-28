@@ -19,8 +19,10 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::with('category', 'country', 'movie_genre')->orderBy('updated_at', 'DESC')->get();
-        // return response()->json($movies);
+        $movies = Movie::with('category', 'country', 'movie_genre')->withCount('episodes')->orderBy('updated_at', 'DESC')->get();
+
+        // số tập
+        $episode_count =
 
         $path = public_path().'/json/';
         if(!is_dir($path)){

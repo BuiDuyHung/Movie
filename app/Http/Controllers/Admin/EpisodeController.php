@@ -44,6 +44,12 @@ class EpisodeController extends Controller
         return redirect()->route('admin.episode.index')->with('msg', 'Thêm tập phim thành công !');
     }
 
+    public function add_episode($id){
+        $episodes = Episode::where('movie_id', $id)->orderBy('episode', 'DESC')->get();
+
+        return view('admincp.episodes.add_episode', compact('episodes'));
+    }
+
     /**
      * Display the specified resource.
      */

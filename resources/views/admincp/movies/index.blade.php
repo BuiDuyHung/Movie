@@ -24,6 +24,7 @@
                     <th>Mã phim</th>
                     <th>Hình ảnh</th>
                     <th>Tên</th>
+                    <th>Tập phim</th>
                     <th>Tên tiếng anh</th>
                     <th>Thời lượng phim</th>
                     <th>Số tập</th>
@@ -55,9 +56,12 @@
                             <img src="{{$item->image}}" width="100px" alt="{{$item->slug}}">
                         </td>
                         <td> {{ $item->title }} </td>
+                        <td>
+                            <a href="{{ route('admin.add_episode', $item->id) }}" class="btn btn-primary btn-sm">Xem</a>
+                        </td>
                         <td> {{ $item->title_english }} </td>
                         <td> {{ $item->time }} </td>
-                        <td> {{ $item->episode }} </td>
+                        <td> {{ $item->episodes_count }}/{{ $item->episode }} tập </td>
                         <td> {{ $item->slug }} </td>
                         <td>
                             @if ($item->belong_category == 'phimbo')

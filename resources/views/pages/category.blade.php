@@ -44,7 +44,7 @@
                                 @if ($item->sub == 1)
                                     Việt sub
                                     @if ($item->episode!=0)
-                                    - {{$item->episode}}/{{$item->episode}} Tập
+                                    - {{$item->episodes_count}}/{{$item->episode}} Tập
                                     @endif
                                 @else
                                     Thuyết minh

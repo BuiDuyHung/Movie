@@ -163,13 +163,13 @@
                 <div class="section-bar clearfix">
                     <h2 class="section-title"><span style="color:#ffed4d">Bình luận</span></h2>
                 </div>
-                <div class="entry-content htmlwrap clearfix">
+                {{-- <div class="entry-content htmlwrap clearfix">
                     <div class="video-item halim-entry-box">
                         <article id="post-38424" class="item-content">
                             <div class="fb-comments" data-href="http://127.0.0.1:8000/phim/ca-map-sieu-bao-chua-2%20-vuc-sau" data-width="" data-numposts="5"></div>
                         </article>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
        <section class="related-movies">

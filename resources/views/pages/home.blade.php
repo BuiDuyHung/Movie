@@ -44,11 +44,11 @@
                                     Season {{$item->season}}
                                 </span>
                             @endif
-                            @if ($item->episode!=0)
+                            {{-- @if ($item->episode!=0)
                                 <span class="season"><i class="fa fa-play" aria-hidden="true"></i>
                                     Full {{$item->episode}}/{{$item->episode}}
                                 </span>
-                            @endif
+                            @endif --}}
                             <div class="icon_overlay"></div>
                             <div class="halim-post-title-box">
                             <div class="halim-post-title ">

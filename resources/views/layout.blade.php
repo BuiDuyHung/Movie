@@ -178,8 +178,8 @@
             <script type='text/javascript' src='{{ asset('js/owl.carousel.min.js') }}' id='carousel-js'></script>
             <script type='text/javascript' src='{{ asset('js/halimtheme-core.min.js') }}' id='halim-init-js'></script>
 
-            <div id="fb-root"></div>
-            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0&appId=289086570392189&autoLogAppEvents=1" nonce="jjV9tn0g"></script>
+            {{-- <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0&appId=289086570392189&autoLogAppEvents=1" nonce="jjV9tn0g"></script> --}}
 
             {{-- Search --}}
             <script>

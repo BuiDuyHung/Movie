@@ -46,6 +46,7 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
     Route::resource('episode', EpisodeController::class);
     Route::get('/select-movie', [EpisodeController::class, 'select_movie'])->name('select_movie');
+    Route::get('/add-episode/{id}', [EpisodeController::class, 'add_episode'])->name('add_episode');
 
     Route::resource('genre', GenreController::class);
 

@@ -54,7 +54,7 @@ class IndexController extends Controller
         $movie_trailer = Movie::where('hot', 1)->where('status', 1)->where('resolution', 5)->orderBy('updated_at', 'DESC')->take(8)->get();
 
         $category_slug = Category::where('slug', $slug)->first();
-        $movie = Movie::where('category_id', $category_slug->id)->orderBy('updated_at', 'DESC')->paginate(20);
+        $movie = Movie::where('category_id', $category_slug->id)->withCount('episodes')->orderBy('updated_at', 'DESC')->paginate(20);
 
 
         return view('pages.category', compact('categories', 'genres', 'countries', 'category_slug', 'movie', 'moviehot_sidebar', 'movie_trailer'));
