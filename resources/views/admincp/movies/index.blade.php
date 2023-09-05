@@ -117,6 +117,7 @@
                         </td>
                         <td>
                             <select class="select-topview" name="topview" id="{{$item->id}}">
+                                <option value="0">--Top view--</option>
                                 <option value="1" {{ $item->topview == 1 ? 'selected':'' }}>Ngày</option>
                                 <option value="2" {{ $item->topview == 2 ? 'selected':'' }}>Tuần</option>
                                 <option value="3" {{ $item->topview == 3 ? 'selected':'' }}>Tháng</option>

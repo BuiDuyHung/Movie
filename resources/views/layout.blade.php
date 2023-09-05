@@ -60,6 +60,18 @@
                     background-color: #316ca3;
                     color: #fff;
                 }
+
+                .style-filter {
+                    background-color: #23425c;
+                    border: 0;
+                    color: white;
+                }
+
+                .btn-filter {
+                    height: 35px;
+                    border-radius: 5px;
+                    width: 90px;
+                }
             </style>
 
             <style>#header .site-title {background: url(https://logoart.vn/blog/wp-content/uploads/2013/03/thiet-ke-logo-an-tuong-logoart-11.png) no-repeat top left;background-size: contain;text-indent: -9999px; border-radius: 10px;}</style>

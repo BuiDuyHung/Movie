@@ -60,9 +60,9 @@
                     </div>
                 </article>
             @endforeach
-
         </div>
     </div>
+
     {{-- <div class="col-xs-12 carausel-sliderWidget">
        <section id="halim-advanced-widget-4">
           <div class="section-heading">
@@ -94,6 +94,59 @@
        <div class="clearfix"></div>
     </div> --}}
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
+        <div class="section-bar clearfix">
+            <div class="row">
+                <form action="{{ route('home.filterMovie') }}" method="GET">
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <select class="form-control style-filter" name="order" id="exampleFormControlSelect1">
+                                <option value="">--Sắp xếp--</option>
+                                <option value="date">Ngày đăng</option>
+                                <option value="year_release">Năm sản xuất</option>
+                                <option value="name_a_z">Tên phim</option>
+                                <option value="views">Lượt xem</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <select class="form-control style-filter" name="genre" id="exampleFormControlSelect1">
+                                <option value="">--Thể loại--</option>
+                                @foreach ($genres as $item)
+                                    <option value="{{$item->id}}"> {{$item->title}} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <select class="form-control style-filter" name="country" id="exampleFormControlSelect1">
+                                <option value="">--Quốc gia--</option>
+                                @foreach ($countries as $item)
+                                    <option value="{{$item->id}}"> {{$item->title}} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <select class="form-control style-filter" name="year" id="exampleFormControlSelect1">
+                                <option value="">--Năm--</option>
+                                @for ($year = 2000; $year <= 2023; $year++)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="submit" class="btn btn-sm btn-default style-filter btn-filter" value="Lọc Phim">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
         @foreach ($categories_home as $category_home)
             <section id="halim-advanced-widget-2">
                 <div class="section-heading">

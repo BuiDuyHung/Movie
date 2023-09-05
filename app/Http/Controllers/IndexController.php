@@ -27,6 +27,7 @@ class IndexController extends Controller
         return view('pages.home', compact('categories', 'genres', 'countries', 'categories_home', 'movie_hot', 'moviehot_sidebar', 'movie_trailer'));
     }
 
+    // Hàm tìm kiếm
     public function search(){
         if(isset($_GET['search'])){
             $search = $_GET['search'];
@@ -42,6 +43,29 @@ class IndexController extends Controller
             return view('pages.search', compact('categories', 'genres', 'countries', 'moviehot_sidebar', 'movie_trailer', 'movie', 'search'));
         }else{
             redirect()->route('home.index');
+        }
+
+    }
+
+    // Hàm lọc phim
+    public function filterMovie(){
+        $sort = $_GET['order'];
+        $genre = $_GET['genre'];
+        $country = $_GET['country'];
+        $year = $_GET['year'];
+
+        if($sort == '' && $genre == '' && $country == '' && $year ==''){
+            return redirect()->back();
+        }else{
+            $categories = Category::orderBy('position', 'ASC')->where('status', 1)->get();
+            $genres = Genre::all();
+            $countries = Country::all();
+            $moviehot_sidebar = Movie::where('hot', 1)->where('status', 1)->whereNotIn('resolution',[5])->orderBy('updated_at', 'DESC')->take(8)->get();
+            $movie_trailer = Movie::where('hot', 1)->where('status', 1)->where('resolution', 5)->orderBy('updated_at', 'DESC')->take(8)->get();
+
+            $movies = Movie::withCount('episodes')->orWhere('country_id', $country)->orWhere('genre_id', $genre)->orWhere('year', $year)->orderBy('updated_at', 'DESC')->paginate(20);
+
+            return view('pages.filter', compact('categories', 'genres', 'countries', 'moviehot_sidebar', 'movie_trailer', 'movies'));
         }
 
     }

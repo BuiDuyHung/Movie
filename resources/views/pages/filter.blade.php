@@ -6,7 +6,7 @@
        <div class="panel-heading">
           <div class="row">
              <div class="col-xs-6">
-                <div class="yoast_breadcrumb hidden-xs"><span><span><a href=""> {{ $category_slug->title }} </a> » <span class="breadcrumb_last" aria-current="page">2023</span></span></span></div>
+                <div class="yoast_breadcrumb hidden-xs"><span><span><a href=""> Lọc phim </a> » <span class="breadcrumb_last" aria-current="page">2023</span></span></span></div>
              </div>
           </div>
        </div>
@@ -17,12 +17,11 @@
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
        <section>
             <div class="section-bar clearfix">
-                <h1 class="section-title"><span>{{ $category_slug->title }}</span></h1>
+                <h1 class="section-title"><span> Lọc phim </span></h1>
             </div>
-            {{-- <div class="section-bar clearfix">
+            <div class="section-bar clearfix">
                 <div class="row">
                     <form action="{{ route('home.filterMovie') }}" method="GET">
-
                         <div class="col-md-2">
                             <div class="form-group">
                                 <select class="form-control style-filter" name="order" id="exampleFormControlSelect1">
@@ -69,9 +68,9 @@
                         </div>
                     </form>
                 </div>
-            </div> --}}
+            </div>
             <div class="halim_box">
-                @foreach ($movie as $item)
+                @foreach ($movies as $item)
                     <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-27021">
                         <div class="halim-item">
                         <a class="halim-thumb" href="{{ route('home.movie', $item->slug) }}" title="{{$item->title}}">
@@ -129,7 +128,7 @@
                     <li><a class="page-numbers" href="">55</a></li>
                     <li><a class="next page-numbers" href=""><i class="hl-down-open rotate-right"></i></a></li>
                 </ul> --}}
-                {!! $movie->links("pagination::bootstrap-4") !!}
+                {!! $movies->links("pagination::bootstrap-4") !!}
             </div>
        </section>
     </main>
