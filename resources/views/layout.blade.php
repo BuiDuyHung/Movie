@@ -69,8 +69,8 @@
 
                 .btn-filter {
                     height: 35px;
-                    border-radius: 5px;
-                    width: 90px;
+                    border-radius: 4px;
+                    width: 111px;
                 }
             </style>
 

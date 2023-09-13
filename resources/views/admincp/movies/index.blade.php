@@ -57,7 +57,7 @@
                         </td>
                         <td> {{ $item->title }} </td>
                         <td>
-                            <a href="{{ route('admin.add_episode', $item->id) }}" class="btn btn-primary btn-sm">Xem</a>
+                            <a href="{{ route('admin.add_episode', $item->id) }}" class="btn btn-primary btn-sm">Xem tập phim</a>
                         </td>
                         <td> {{ $item->title_english }} </td>
                         <td> {{ $item->time }} </td>

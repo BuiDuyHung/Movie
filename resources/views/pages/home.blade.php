@@ -95,13 +95,16 @@
     </div> --}}
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
         <div class="section-bar clearfix">
+            <div class="section-bar clearfix">
+                <h3 class="section-title"><span>LỌC PHIM</span></h3>
+             </div>
             <div class="row">
                 <form action="{{ route('home.filterMovie') }}" method="GET">
 
                     <div class="col-md-2">
                         <div class="form-group">
                             <select class="form-control style-filter" name="order" id="exampleFormControlSelect1">
-                                <option value="">--Sắp xếp--</option>
+                                <option value="">-Sắp xếp-</option>
                                 <option value="date">Ngày đăng</option>
                                 <option value="year_release">Năm sản xuất</option>
                                 <option value="name_a_z">Tên phim</option>
@@ -112,17 +115,17 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <select class="form-control style-filter" name="genre" id="exampleFormControlSelect1">
-                                <option value="">--Thể loại--</option>
+                                <option value="">-Thể loại-</option>
                                 @foreach ($genres as $item)
                                     <option value="{{$item->id}}"> {{$item->title}} </option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
                             <select class="form-control style-filter" name="country" id="exampleFormControlSelect1">
-                                <option value="">--Quốc gia--</option>
+                                <option value="">-Quốc gia-</option>
                                 @foreach ($countries as $item)
                                     <option value="{{$item->id}}"> {{$item->title}} </option>
                                 @endforeach
@@ -132,7 +135,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <select class="form-control style-filter" name="year" id="exampleFormControlSelect1">
-                                <option value="">--Năm--</option>
+                                <option value="">-Năm-</option>
                                 @for ($year = 2000; $year <= 2023; $year++)
                                     <option value="{{ $year }}">{{ $year }}</option>
                                 @endfor

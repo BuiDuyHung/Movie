@@ -806,7 +806,7 @@ button.navbar-toggle.collapsed {
 }
 .popular-post {
   padding: 0;
-  margin: 0 0 25px;
+  margin: 0 0 3px;
 }
 .popular-post .item {
   clear: both;
@@ -1232,7 +1232,7 @@ tr.title {
 .grid-item {
 }
 .halim_box .grid-item {
-  padding: 2px;
+  padding: 3px;
 }
 .grid-item,
 .grid-item .halim-thumb {
@@ -2670,9 +2670,11 @@ tr.title {
 }
 .wrap-slider .owl-carousel .owl-nav .owl-next {
   right: 0;
+  height: 30px;
 }
 .wrap-slider .owl-carousel .owl-nav .owl-prev {
   left: 0;
+  height: 30px;
 }
 .owl-dots {
   position: absolute;
