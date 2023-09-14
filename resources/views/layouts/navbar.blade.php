@@ -1,7 +1,7 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href=" {{ route('admin.index') }} ">Admin - Website</a>
-    <!-- Sidebar Toggle-->
+    <a class="navbar-brand ps-3" href=" {{ route('admin.index') }} ">Admin - PsFilm</a>
+    <!-- Sidebar Toggle-->s
     <button class="btn btn-link  order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <a class="navbar-brand mb-2" href=" {{ route('home.index') }} "><i class="fa-solid fa-house"></i></a>
     <!-- Navbar Search-->
@@ -12,12 +12,8 @@
         </div>
     </form>
     <!-- Navbar-->
-    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">Đăng xuất</a></li>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
-        @csrf
-    </form>
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+
+    {{-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdow" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-user fa-fw"></i>
@@ -25,8 +21,27 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdow">
                 <li><a class="dropdown-item" href="#!">Thông tin tài khoản</a></li>
                 <li><hr class="dropdown-divider" /></li>
-
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Đăng xuất</a>
+                </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                    @csrf
+                </form>
             </ul>
+
         </li>
+    </ul> --}}
+
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+
+        <a class="a-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Đăng xuất
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+            @csrf
+        </form>
     </ul>
 </nav>
