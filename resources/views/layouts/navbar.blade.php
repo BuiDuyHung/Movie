@@ -13,26 +13,6 @@
     </form>
     <!-- Navbar-->
 
-    {{-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdow" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user fa-fw"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdow">
-                <li><a class="dropdown-item" href="#!">Thông tin tài khoản</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">Đăng xuất</a>
-                </li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
-                    @csrf
-                </form>
-            </ul>
-
-        </li>
-    </ul> --}}
-
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
 
         <a class="a-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
