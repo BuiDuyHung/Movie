@@ -16,8 +16,13 @@ class CategoryController extends Controller
     {
         $categories = Category::orderBy('position', 'ASC')->get();
 
+        // count categories -> dashboard
+        $countCategory = Category::all()->count();
+        session()->put('countCategory', $countCategory);
+
         return view('admincp.categories.index', compact('categories'));
     }
+
 
     /**
      * Show the form for creating a new resource.

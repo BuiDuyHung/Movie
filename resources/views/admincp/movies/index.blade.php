@@ -49,6 +49,7 @@
             </thead>
 
             <tbody>
+
                 @foreach ($movies as $item)
                     <tr>
                         <td> {{ $item->id }} </td>

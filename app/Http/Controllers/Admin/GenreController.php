@@ -15,6 +15,8 @@ class GenreController extends Controller
     public function index()
     {
         $genres = Genre::all();
+        $countGenre =  $genres->count();
+        session()->put('countGenre', $countGenre);
 
         return view('admincp.genres.index', compact('genres'));
     }

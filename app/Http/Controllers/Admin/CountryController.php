@@ -14,6 +14,8 @@ class CountryController extends Controller
     public function index()
     {
         $countries = Country::all();
+        $countCountry = $countries->count();
+        session()->put('countCountry', $countCountry);
 
         return view('admincp.countries.index', compact('countries'));
     }

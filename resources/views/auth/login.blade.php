@@ -57,11 +57,11 @@
                                     Đăng nhập
                                 </button>
 
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         Quên mật khẩu?
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>

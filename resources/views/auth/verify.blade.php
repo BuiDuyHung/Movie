@@ -5,12 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card-header">Link đặt lại mật khẩu</div>
 
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                            {{-- {{ __('A fresh verification link has been sent to your email address.') }} --}}
+                            Một đường link đặt lại mật khẩu đã được gửi đến mail của bạn
                         </div>
                     @endif
 

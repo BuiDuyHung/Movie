@@ -21,18 +21,18 @@ class MovieController extends Controller
     {
         $movies = Movie::with('category', 'country', 'movie_genre')->withCount('episodes')->orderBy('updated_at', 'DESC')->get();
 
-        // số tập
-        $episode_count =
+        // count episode -> dashboard
+        $countEpisode = Movie::all()->count();
+        session()->put('countEpisode', $countEpisode);
 
         $path = public_path().'/json/';
         if(!is_dir($path)){
             mkdir($path, 0777, true);
         }
         File::put($path.'movies.json', json_encode($movies));
-
-
         return view('admincp.movies.index', compact('movies'));
     }
+
 
     /**
      * Show the form for creating a new resource.
