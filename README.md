@@ -1,2 +1,6 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+## About website
+Website xem phim trực tuyến
+- Phim mới được cập nhật thường xuyên
+- Nhiểu thể loại hấp dẫn: khoa học viễn tưởng, hành động, hoạt hình, lãnh mạn,...
+- Phim được cập nhật theo những quốc gia khác nhau: Mỹ, Nhật, Trung Quốc,...
+- Mang đến trải nhiệm tuyệt vời qua màn ảnh nhỏ.
